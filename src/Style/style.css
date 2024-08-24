@@ -22,7 +22,8 @@ html{
     --letter-4-color--: #56a2b7;
     --agreement--:      #96cf4d;
     --denial--:         #ef3b1b;
-    --orange--:           #ec6822;
+    --orange--:         #ec6822;
+    --black--:          #000000;
 }
 
 body{
@@ -34,4 +35,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#gameContainer.active{
+    border: 5px solid var(--letter-2-color--);
+    border-radius: 20px;
+    background-color: var(--black--);
+
 }
