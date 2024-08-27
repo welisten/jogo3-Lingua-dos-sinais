@@ -32,7 +32,7 @@ const generalImgDtArr = [
     {
         name: 'bg_ddd',
         key: 'bg ddd',
-        src: '../Assets/imgs/general/bg_ddd.png'
+        src: '../Assets/imgs/general/bg_ddd.jpg'
     },
     {
         name: 'earth',

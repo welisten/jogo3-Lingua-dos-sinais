@@ -38,7 +38,7 @@ a{
 .button{
     border: .25em solid var(--orange--);
     padding: 2.5vh 4vh;
-    color: var(--orange--);
+    background-color: var(--orange--);
     font-size: clamp(1rem, 1.5rem , 2rem);
     font-weight: bold;
     border-radius: 1em;

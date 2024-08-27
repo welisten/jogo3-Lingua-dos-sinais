@@ -3,27 +3,27 @@
     --yellow-- : #f2de04;
     --yellow-shadow-- : #fcf06d;
 }
-img{
+
+#logoContainer img{
+    display: none;
     position: absolute;
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: none;
 }
-.logo.active img{
+
+#logoContainer .logo.active img{
     display: flex;
 
 }
 
-.char_1{
+#char_1{
     left: 50.5%;
-    z-index: 2;
-    height: 40%;
+    height: calc(70% * 0.6);
 }
 
-.bg_ring{
-    z-index: 1;
-    height: 40%;
+#bg_ring{
+    height: calc(70% * 0.6);
 }
 
 .logo.active::before{

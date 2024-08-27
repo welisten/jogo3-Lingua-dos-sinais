@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Matemasie&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
 
+}
 html{
     font-size: 62.5%;
 }
-
 :root{
     --bg-light--:       #fdfdfd;
     --bg-dark--:        #303030;
@@ -25,7 +25,6 @@ html{
     --orange--:         #ec6822;
     --black--:          #000000;
 }
-
 body{
     height: 100vh;
     width: 100vw;
@@ -36,10 +35,181 @@ body{
     justify-content: center;
     align-items: center;
 }
+.container{
+    display: flex;
+}
+.btn{
+    border: none;
+    cursor: pointer;
+    text-transform: capitalize;
+    outline: none;
+    border-radius: 15px;
+    transition: transform .2s ease;
 
-#gameContainer.active{
-    border: 5px solid var(--letter-2-color--);
+}
+.btn:hover{
+    transform: scale(1.05);
+}
+i{
+    font-size: 3rem;
+
+}
+.gameControls{
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: -12%;
+    height: 100%;
+    width: 10%;
+}
+.btn.controls{
+    margin: 2rem;
+    padding: 2rem;
+    color: 0000;
+    background-color: var(--letter-2-color--);
+}
+
+#gameContainer.inactive{
+    display: none;
+}
+#gameContainer{
+    position: relative;
+    max-height: 590px;
+    max-width: 930px;
+    display: flex;
+    flex-direction: column;
+    border: 10px solid var(--letter-2-color--);
     border-radius: 20px;
     background-color: var(--black--);
+    background-image:linear-gradient(180deg, #4ba4ff, #fff);
+}
 
+/* HOME */
+
+#gameContainer.hm{
+    border-radius:130px 20px 20px 20px ;
+}
+.bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius:130px 10px 10px 10px;
+    background-image: url('./../Assets/imgs/general/bg_ddd.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    z-index: 1;
+    opacity: .15;
+}
+.hm-c{
+    width: 100%; 
+    height: 50%;
+}
+.hm-c.botton{
+    position: relative;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+}
+
+.hm-logo{
+    position: relative;
+    width: 35%;
+    height: 100%;
+    z-index: 5;
+
+}
+.lg-earth{
+    height: 50rem;
+    transform: translate(-30%, -22.5%) rotate(-15deg);
+}
+.lg-clouds{
+    position: absolute;
+    height: 30rem;
+    top: 0;
+    z-index: 1;
+}
+.cl-1{
+    top: -10%;
+    left: 60%;
+}
+.cl-2{
+    top: 50%;
+    left: -40%;
+    height: 25rem;
+}
+
+.hm-title{
+    z-index: 5;
+
+}
+.title{
+    float: right;
+    height: 25rem;
+}
+.h-1{
+    position: absolute;
+    opacity: .75;
+    bottom: 31%;
+    right: 30%;
+    height: 85%;
+    z-index: 2;
+
+}
+.wrapper{
+    position: absolute;
+    bottom: 0%;
+    right: 27%;
+    height: 100%;
+    width: auto;
+    overflow: hidden;
+    z-index: 2;
+}
+.h-2{
+    position: relative;
+    opacity: .75;
+    height: 85%;
+    top: 30%;
+}
+.h-1{
+    transform: rotate(180deg);
+    right: 55%;
+}
+
+.botton .hm-menu{
+    flex-direction: column;
+    float: left;
+    height: 100%;
+    padding: 0 4rem;
+
+}
+.hm-btn{
+    margin-bottom: 2rem;
+    padding: 2.5rem 6rem;
+    font-size: 5rem;
+    font-family: "Matemasie", sans-serif;
+    border-radius: 15px;
+    background-image: linear-gradient(135deg, #f0ff00, #ff8300, #ff4d00);
+    color: white;
+    z-index: 3;
+    
+
+}
+                                    /* ALFABETO */
+
+
+@media (max-height: 1080px){
+    html{
+        font-size: 52.5%;
+    }
+}
+@media (max-height: 720px){
+    html{
+        font-size: 42.5%;
+    }
 }
