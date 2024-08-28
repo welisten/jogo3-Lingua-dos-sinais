@@ -1,5 +1,7 @@
 import { gameData } from "../../Constants/gameData.js";
 import { colors } from "../../Constants/Colors.js";
+import { Letters } from "./Letters.js";
+import { Words } from "./Words.js";
 
 
 class App {
@@ -7,6 +9,7 @@ class App {
         
         this.element = document.querySelector('#gameContainer'),
        
+        this.currentAudio = {config:{startTime: 0, pausedAt: 0}}
         this.audioContext = new (window.AudioContext || window.webkitAudioContext)()//rever propriedade do obj
         this.gainNode = this.audioContext.createGain()
         
@@ -17,17 +20,20 @@ class App {
     }
 
     start(){
-        this.setContainer()
+        this.buildContainer()
+        this.setContainersElms()
+        // this.setSettingsControllers()
 
         this.playAudio(gameAssets['positiveBlipEffect'])
-            setTimeout(() => this.playAudio(gameAssets['theme1'], .5, true), 1000)
+        setTimeout(() => this.playAudio(gameAssets['theme1'], .5, true), 1000)
 
         
         
 
 
     }
-    setContainer(){
+    buildContainer(){
+        // CONSTRUIR HIERARQUIA E OS ELEMENTOS DA DOM REFERENTE A PAGINA HOME
         let ruleW , gContainerWidth, gcontainerHeight  ;
 
         this.element.classList.remove('inactive')
@@ -53,21 +59,6 @@ class App {
 
             return element
         }
-
-        // {const logoC_El = createNewElement('div', cl = undefined, 'logoContainer')
-        // const logoGroup_El = createNewElement('div', 'logo')
-        // const char1_img_El = createNewElement('img', cl = undefined, 'char_1')
-        // const bgRing_img_El = createNewElement('img', cl = undefined, 'bg_ring')
-
-        // char1_img_El.setAttribute('alt', 'Eu te amo em Libras')
-        // bgRing_img_El.setAttribute('alt', 'anelBrilhante')
-
-        // char1_img_El.style.zIndex = '2'
-        // bgRing_img_El.style.zIndex = '1'
-
-        // logoGroup_El.appendChild(char1_img_El)
-        // logoGroup_El.appendChild(bgRing_img_El)
-        // logoC_El.appendChild}
 
         const gameC_El = this.element
         
@@ -99,7 +90,7 @@ class App {
         
         const menuC_El = createNewElement('div', 'hm-menu container')
         const letterBtn_El = createNewElement('button', 'btn hm-btn', 'hm-lettersBtn')
-        const wordBtn_El = createNewElement('button', 'btn hm-btn', 'hm-lettersBtn')
+        const wordBtn_El = createNewElement('button', 'btn hm-btn', 'hm-wordsBtn')
 
         letterBtn_El.innerHTML = 'alfabeto'
         wordBtn_El.innerHTML = 'palavras'
@@ -137,22 +128,48 @@ class App {
         gameC_El.appendChild(bg_El)
     }
 
+    setContainersElms(){
+        // CONFIGURAR OS BOTÕES DO MENU E QUALQUER OUTRO ELEMENTO DA TELA
+        const letterBtn_El = document.getElementById('hm-lettersBtn')
+        const wordBtn_El = document.getElementById('hm-wordsBtn')
+        
+        letterBtn_El.addEventListener('click', (e) => {
+            this.stopCurrentAudio()
+            new Letters(this)
+        })
+        wordBtn_El.addEventListener('click', (e) => {
+            this.stopCurrentAudio()
+            new Words(this)
+        })
+
+        // HOVER E BLUR
+        // sonds
+    }
+    setSettingsControllers(){
+        // CONFIGURAR OS BOTÕES DE CONFIGURAÇÃO
+
+    }
+
+
     playAudio(audioBuffer, volume = 1.0, loop = false){   
         if(!gameData.isMute){
             const src = this.audioContext.createBufferSource()
-            let aux = volume
             src.buffer = audioBuffer
             src.loop = loop
     
-            volume = gameData.isMute === true ? 0 : aux
+            volume = gameData.isMute === true ? 0 : 1
             this.gainNode.gain.value = volume 
             
             src.connect(this.gainNode)
             this.gainNode.connect(this.audioContext.destination)
-            src.start()
-            if(loop === true) this.currentAudio = src
+            if(loop !== true){
+                src.start()
+    
+            } else {
+                src.start(0, this.currentAudio.config.startTime)
+                this.currentAudio.audio = src
+            }
         }
-
     }
     stopCurrentAudio(){
         if(this.currentAudio.audio) {
@@ -162,6 +179,11 @@ class App {
         }
     }
 
+    resetContainerToNewScene(){
+        this.element.querySelector('.bg').remove()
+        this.element.querySelectorAll('.hm-c').forEach(el => el.remove())
+
+    }
     getImage(key){
         return gameAssets[key]
     }
