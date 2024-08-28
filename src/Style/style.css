@@ -109,7 +109,7 @@ i{
     width: 100%; 
     height: 50%;
 }
-.hm-c.botton{
+.hm-c.bottom{
     position: relative;
     height: 100%;
     flex-direction: column;
@@ -181,7 +181,7 @@ i{
     right: 55%;
 }
 
-.botton .hm-menu{
+.bottom .hm-menu{
     flex-direction: column;
     float: left;
     height: 100%;
