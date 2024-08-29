@@ -16,23 +16,26 @@ class App {
         
         document.title = 'Vamos Librar !'
         
+        this.setSettingsControllers()
         this.start()
+    }
 
+    setSettingsControllers(){
+        const lightBtn = document.querySelector('#lightBtn')
+
+        lightBtn.addEventListener('click', () => {
+            this.toggleLightMode()
+        })
     }
 
     start(){
         this.buildContainer()
         this.setContainersElms()
-        // this.setSettingsControllers()
 
         this.playAudio(gameAssets['positiveBlipEffect'])
         setTimeout(() => this.playAudio(gameAssets['theme1'], .5, true), 1000)
-
-        
-        
-
-
     }
+
     buildContainer(){
         // CONSTRUIR HIERARQUIA E OS ELEMENTOS DA DOM REFERENTE A PAGINA HOME
         
@@ -116,7 +119,6 @@ class App {
         const bg_El = createNewElement('div', 'bg')
         gameC_El.appendChild(bg_El)
     }
-
     setContainersElms(){
         // CONFIGURAR OS BOTÕES DO MENU E QUALQUER OUTRO ELEMENTO DA TELA
         const letterBtn_El = document.getElementById('hm-lettersBtn')
@@ -132,10 +134,6 @@ class App {
         })
 
         this.setBtns()
-    }
-    setSettingsControllers(){
-        // CONFIGURAR OS BOTÕES DE CONFIGURAÇÃO
-
     }
 
 
@@ -167,7 +165,15 @@ class App {
         }
     }
     toggleLightMode(){
+        if(gameData.isDarkMode){
+            // transformar em light
+            document.body.style.backgroundColor = `${colors.bg_light}`
+        } else {
+            // transformar em dark
+            document.body.style.backgroundColor = `${colors.bg_dark}`
+        }
 
+        gameData.isDarkMode = ! gameData.isDarkMode
     }
     resetContainerToNewScene(){
         this.element.querySelector('.bg').remove()
