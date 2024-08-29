@@ -19,6 +19,7 @@ class Preloader{
         this.setPreloader()
 
         document.title = 'Carregando...'
+        if(!gameData.isDarkMode) document.body.style.backgroundColor = `${colors.bg_light}`
     }
 
     setPreloader(){

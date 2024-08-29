@@ -15,17 +15,41 @@ class App {
         this.gainNode = this.audioContext.createGain()
         
         document.title = 'Vamos Librar !'
+        if(!gameData.isMute) this.gainNode.gain.value == 0
+
         
         this.setSettingsControllers()
         this.start()
     }
 
     setSettingsControllers(){
+
+        const muteBtn = document.querySelector('#muteBtn')
         const lightBtn = document.querySelector('#lightBtn')
+
+        setIcons()
+
+        muteBtn.addEventListener('click', () => {
+            this.toggleVolume()
+        })
 
         lightBtn.addEventListener('click', () => {
             this.toggleLightMode()
         })
+
+        function setIcons(){
+            if(gameData.isMute){
+                muteBtn.children[0].setAttribute('class', 'fa-solid fa-volume-xmark')
+            }else{
+                muteBtn.children[0].setAttribute('class', 'fa-solid fa-volume-high')
+            }
+
+            if(gameData.isDarkMode){
+                lightBtn.children[0].setAttribute('class', 'fa-regular fa-sun')
+            } else {
+                lightBtn.children[0].setAttribute('class', 'fa-regular fa-moon')
+            }
+        }
     }
 
     start(){
@@ -138,7 +162,6 @@ class App {
 
 
     playAudio(audioBuffer, volume = 1.0, loop = false){   
-        if(!gameData.isMute){
             const src = this.audioContext.createBufferSource()
             src.buffer = audioBuffer
             src.loop = loop
@@ -155,7 +178,6 @@ class App {
                 src.start(0, this.currentAudio.config.startTime)
                 this.currentAudio.audio = src
             }
-        }
     }
     stopCurrentAudio(){
         if(this.currentAudio.audio) {
@@ -165,15 +187,27 @@ class App {
         }
     }
     toggleLightMode(){
+        let btn = document.getElementById('lightBtn')
+
         if(gameData.isDarkMode){
             // transformar em light
             document.body.style.backgroundColor = `${colors.bg_light}`
+
         } else {
             // transformar em dark
             document.body.style.backgroundColor = `${colors.bg_dark}`
         }
-
+        btn.children[0].classList.toggle('fa-sun')
+        btn.children[0].classList.toggle('fa-moon')
         gameData.isDarkMode = ! gameData.isDarkMode
+    }
+    toggleVolume(){
+        this.gainNode.gain.value == 1 ? this.gainNode.gain.value = 0 : this.gainNode.gain.value = 1
+            
+        muteBtn.children[0].classList.toggle('fa-volume-xmark')
+        muteBtn.children[0].classList.toggle('fa-volume-high')
+
+        gameData.isMute = !gameData.isMute
     }
     resetContainerToNewScene(){
         this.element.querySelector('.bg').remove()
