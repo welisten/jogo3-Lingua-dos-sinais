@@ -74,6 +74,32 @@ img{
     user-select: none;
 }
 
+#popUpMessage{
+    position: absolute;
+    top: -33rem;
+    right: 15%;
+    min-height: 33rem;
+    min-width: 45rem;
+    background-image: url('./../Assets/imgs/general/popUp_board.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 10;
+    transition: all 1s ease;
+}
+#popUpMessage .popupText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: calc(31.3rem * .72);
+    width: 100%;
+    margin-top: 22%;
+    font-size: 3rem;
+    font-family: "Moderustic", sans-serif;
+    color: white;
+}
+
 #gameContainer.inactive{
     display: none;
 }

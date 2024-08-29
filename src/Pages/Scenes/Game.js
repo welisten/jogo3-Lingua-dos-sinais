@@ -236,6 +236,20 @@ class App {
             })
         })
     }
+    popUpMessage(message, delay = 3500){   // EXIBE MENSAGEM NO POPUP VISÍVEL
+        const popUp = document.getElementById('popUpMessage')
+        const popupText = document.querySelector('.popupText')
+        
+        popUp.style.top = `0`
+        popupText.children[0].textContent = message
+    
+        
+        setTimeout(() => {
+            popUp.style.top = `-33rem`
+            setTimeout( () => popupText.children[0].textContent = '', 1000)
+
+        }, delay)
+    }
 }
 
 
