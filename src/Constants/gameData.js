@@ -1,7 +1,7 @@
 const gameData = {
     isPreloadComplete: false,
     app: undefined, 
-    isMute: true,
+    isMute: false,
     isDarkMode: true,
     isLibrasActive: false,
     isPaused: false,

@@ -55,14 +55,12 @@ i{
 
 }
 .gameControls{
-    position: absolute;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    top: 0;
-    right: -12%;
-    height: 100%;
-    width: 10%;
+    height: 70%;
+    width: 10vh;
 }
 .btn.controls{
     margin: 2rem;
@@ -70,8 +68,15 @@ i{
     color: 0000;
     background-color: var(--letter-2-color--);
 }
+img{
+    pointer-events: none;
+    user-select: none;
+}
 
 #gameContainer.inactive{
+    display: none;
+}
+#gameContainer.inactive ~ .gameControls{
     display: none;
 }
 #gameContainer{
@@ -84,6 +89,8 @@ i{
     border-radius: 20px;
     background-color: var(--black--);
     background-image:linear-gradient(180deg, #4ba4ff, #fff);
+    margin: 0 2rem;
+
 }
 
 /* HOME */

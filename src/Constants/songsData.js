@@ -8,6 +8,11 @@ const audioDataArr = [
         name: 'positiveBlipEffect',
         key: 'positive blip effect',
         src:'../Assets/songs/positiveBlipEffect.wav'
+    },
+    {
+        name: 'btn_select',
+        key: 'btn select',
+        src:'../Assets/songs/btn_select.wav'
     }
 ]
 

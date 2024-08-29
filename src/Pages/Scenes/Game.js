@@ -8,6 +8,7 @@ class App {
     constructor(){
         
         this.element = document.querySelector('#gameContainer'),
+        this.element.classList.add('hm')
        
         this.currentAudio = {config:{startTime: 0, pausedAt: 0}}
         this.audioContext = new (window.AudioContext || window.webkitAudioContext)()//rever propriedade do obj
@@ -34,6 +35,7 @@ class App {
     }
     buildContainer(){
         // CONSTRUIR HIERARQUIA E OS ELEMENTOS DA DOM REFERENTE A PAGINA HOME
+        
         let ruleW , gContainerWidth, gcontainerHeight  ;
 
         this.element.classList.remove('inactive')
@@ -111,19 +113,6 @@ class App {
         homeC_bottom_El.appendChild(wrapperC_El)
         gameC_El.appendChild(homeC_bottom_El)
 
-
-        const gControlsC_El = createNewElement('div', 'gameControls container')
-        const muteBtn_El = createNewElement('button', 'btn controls', 'muteBtn')
-        const lightBtn_El = createNewElement('button', 'btn controls', 'lightBtn')
-        const vol_icon_El = createNewElement('i', 'fa-solid fa-volume-xmark')
-        const sun_icon_El = createNewElement('i', 'fa-regular fa-sun')
-        
-        muteBtn_El.appendChild(vol_icon_El)
-        lightBtn_El.appendChild(sun_icon_El)
-        gControlsC_El.appendChild(muteBtn_El)
-        gControlsC_El.appendChild(lightBtn_El)
-        gameC_El.appendChild(gControlsC_El)
-
         const bg_El = createNewElement('div', 'bg')
         gameC_El.appendChild(bg_El)
     }
@@ -142,8 +131,7 @@ class App {
             new Words(this)
         })
 
-        // HOVER E BLUR
-        // sonds
+        this.setBtns()
     }
     setSettingsControllers(){
         // CONFIGURAR OS BOTÕES DE CONFIGURAÇÃO
@@ -178,14 +166,35 @@ class App {
             this.currentAudio.audio = null
         }
     }
+    toggleLightMode(){
 
+    }
     resetContainerToNewScene(){
         this.element.querySelector('.bg').remove()
         this.element.querySelectorAll('.hm-c').forEach(el => el.remove())
+        this.element.classList.remove('hm')
 
     }
     getImage(key){
         return gameAssets[key]
+    }
+    setBtns(){
+        let btns = document.querySelectorAll('.btn')
+        let h_aux = false;
+
+        btns.forEach((btn) => {
+            btn.addEventListener('mouseenter', () => {
+                if(!h_aux){
+                    h_aux = !h_aux
+                    this.playAudio(gameAssets['btn_select'])
+                    console.log('o mouse está dentro')
+                }
+            })
+
+            btn.addEventListener('mouseout', () => {
+                h_aux = false
+            })
+        })
     }
 }
 
