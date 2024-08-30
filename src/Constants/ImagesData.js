@@ -73,6 +73,11 @@ const generalImgDtArr = [
         name: 'tree',
         key: 'tree',
         src: '../Assets/imgs/general/tree.png'
+    },
+    {
+        name: 'home_gif',
+        key: 'home gif',
+        src: '../Assets/imgs/general/home.gif'
     }
 ]
 // por convenção do projeto, as imgs de libras terão seu nome com letra MINÚSCULAS
