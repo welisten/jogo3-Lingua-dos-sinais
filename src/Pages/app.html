@@ -38,30 +38,51 @@
                 <button type="submit" class="lt-hd-searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <div class="lt-hd-nav container">
-                <div class="filters">
-                    <label>
-                        <input type="radio" name="group" value="todos">
-                        todos
-                    </label>
-                    <label>
-                        <input type="radio" name="group" value="vogais">
-                        vogais
-                    </label>
-                    <label>
-                        <input type="radio" name="group" value="consoantes">
-                        consoantes
-                    </label>
+                <div class="hd-nav-filters container">
+                    <div class="ft-btn-container btn">
+                        <input class="ft-btn-rd"  type="radio" name="group" id="todos" value="todos" checked>
+                        <label for="todos" class="filterBtn ">todos</label>
+                    </div>
+                    <div class="ft-btn-container btn">
+                        <input class="ft-btn-rd" type="radio" name="group" id="vogais" value="vogais" >
+                        <label for="vogais" class="filterBtn ">vogais</label>
+                    </div>
+                    <div class="ft-btn-container btn">
+                        <input class="ft-btn-rd" type="radio" name="group" id="consoantes" value="consoantes">
+                        <label for="consoantes" class="filterBtn ">consoantes</label>
+                    </div>
                 </div>
                 <img class="hd-nav-char2" src="./../Assets/imgs/general/char2.png" alt="menina">
                 
-                <img class="hd-nav-grass1 grass" src="./../Assets/imgs/general/grass.png" alt="grama">
-                <img class="hd-nav-grass2 grass" src="./../Assets/imgs/general/grass.png" alt="grama">
-                <img class="hd-nav-grass3 grass" src="./../Assets/imgs/general/grass.png" alt="grama">
-                <img class="hd-nav-grass4 grass" src="./../Assets/imgs/general/grass.png" alt="grama">
+                <img class="hd-nav-grass grass" src="./../Assets/imgs/general/grass.png" alt="grama">
+                <img class="hd-nav-grass grass" src="./../Assets/imgs/general/grass.png" alt="grama">
+                <img class="hd-nav-grass grass" src="./../Assets/imgs/general/grass.png" alt="grama">
+                <img class="hd-nav-grass grass" src="./../Assets/imgs/general/grass.png" alt="grama">
             </div>
         </div>
-        <div class="lt-main"></div>
-        <div class="lt-footer"></div>
+        <div class="lt-main">
+            <div class="lt-mn-container container">
+                <div class="lt-mn-letterCard lt-card">
+                    <img src="../Assets/imgs/letters/A.gif" alt="" class="lt-letter">
+                </div>
+                <i class="fa-solid fa-equals"></i>                
+                <div class="lt-mn-signCard lt-card">
+                    <img src="../Assets/imgs/hands/a.png" alt="" class="lt-sign">
+                </div>
+            </div>
+        </div>
+        <div class="lt-footer">
+            <div class="lt-ft-btns container">
+                <button class="prevBtn lt-btn btn" id="prevBtn">
+                    <i class="fa-solid fa-left-long"></i>                </button>
+                <button class="nextBtn lt-btn btn" id="nextBtn">
+                    <i class="fa-solid fa-right-long"></i>
+                </button>
+                <button class="playBtn btn">
+                    <i class="fa-brands fa-youtube"></i>
+                </button>
+            </div>
+        </div>
     
     
     </div>

@@ -24,6 +24,11 @@ html{
     --denial--:         #ef3b1b;
     --orange--:         #ec6822;
     --black--:          #000000;
+    --blue-btn-deep3--: #4271fd;
+    --blue-btn-deep2--: #7dbdf1;
+    --blue-btn-deep1--: #accbeb;
+
+    --green-btn-deep1--: #97ff98;
 }
 body{
     height: 100vh;
@@ -241,21 +246,23 @@ img{
     width: 100%;
 
     & .bg-c1{
-        top: -20rem;
-        left: -20rem;
+        height: 26rem;
+        top: -19rem;
+        left: -17rem;
     }
 
     & .bg-c2{
-        top: -20rem;
-        right: -20rem;
+        height: 26rem;
+        top: -19rem;
+        right: -16rem;
     }
 
     & .bg-gifs-sun{
         position: absolute;
-        height: 20rem;
+        height: 18rem;
         z-index: 2;
         top: -20%;
-        right: 3rem;
+        right: 2rem;
 
     }
 
@@ -271,14 +278,11 @@ img{
         }
     }
 }
-
 .lt-header{
 
     position: relative;
     height: 27.5%;
     width: 100%;
-    border: 1px solid red;
-
     flex-direction: column;
 
     & .lt-hd-search{
@@ -320,27 +324,151 @@ img{
         height: 50%;
         width: 100%;
         padding: 0 10%;
-        border: 1px solid var(--agreement--);
-
         justify-content: space-between;
 
-        & .filters{}
+        & .hd-nav-filters{
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+        
+            & .ft-btn-container{
+                position: relative;
+
+                & .filterBtn{
+                    border: 1px solid var(--bg-light--);
+                    border-radius: 10px;
+                    padding: .3rem 1rem;
+                    margin-right: 1rem;
+                    height: 40%;
+                    min-width: 100px;
+                    text-align: center;
+                    background: radial-gradient(circle, var(--blue-btn-deep1--) 20%, var(--blue-btn-deep2--) 30%, var(--blue-btn-deep3--));
+                    color: var(--bg-light--);
+                    font-size: 2rem;
+                    font-family: "Matemasie", sans-serif;
+                }
+                
+                & .ft-btn-rd{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    opacity: 0;
+                }
+                
+                & input:checked + label{
+                    background: radial-gradient(circle, var(--green-btn-deep1--), var(--agreement--));
+                    color: #000000;
+                }
+            }
+        }
+
         & .grass{
             position: absolute;
             bottom: 0;
-            right: 10%;
             height: 10%;
         }
+
+        & .grass:nth-of-type(2){right: calc(10% + (0 * 6%));}
+        & .grass:nth-of-type(3){right: calc(10% + (1 * 6%));}
+        & .grass:nth-of-type(4){right: calc(10% + (2 * 6%));}
+        & .grass:nth-of-type(5){right: calc(10% + (3 * 6%));}
 
         & .hd-nav-char2{
             position: absolute;
             bottom: 0;
             right: 12%;
-            height: 75%;
+            height: 95%;
+        }
+    }
+    
+}
+.lt-main{
+    height: 50%;
+    width: 100%;
+    padding: 0 10%;
+
+    & .lt-mn-container{
+        border: 3px solid var(--letter-2-color--);
+        height: 100%;
+        width: 100%;
+        border-radius: 15px;
+        background-color: black;
+        padding: 3rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        & .lt-card{
+            border: 3px solid var(--letter-2-color--);
+            height: 27rem;
+            width: 27rem;
+            background-color: var(--bg-light--);
+            border-radius: 15px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 0 auto;
+        }
+        
+        & .lt-letter{
+            height: 100%;
+        }
+        
+        & .lt-sign{
+            height: 80%;
+        }
+
+        & i{
+            font-size: 6rem;
+            color: var(--bg-light--);
+        }
+        
+    }
+
+
+    
+}
+.lt-footer{
+    height: 22.5%;
+    width: 100%;
+    padding: 0 20%;
+    position: relative;
+
+    & .lt-ft-btns{
+        height: 100%;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+
+        & .lt-btn{
+            padding: .5rem 2rem;
+            background-image: radial-gradient(circle, #f0ff00, #ff8300, #ff4d00);
+            color: var(--bg-light--);
+            border-radius: 10px;
+        }
+
+        & .playBtn{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            color: var(--denial--);
+            margin:  0 1rem;
+
+            & i {
+                font-size: 7rem;
+            }
         }
     }
 
+    
+
 }
+
 
 
 
