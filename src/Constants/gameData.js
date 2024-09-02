@@ -5,6 +5,7 @@ const gameData = {
     isDarkMode: true,
     isLibrasActive: false,
     isPaused: false,
+    isClickable: false,
     lastAccText: '',
     lastLevel: 1,
     mainClass: 'Preload'

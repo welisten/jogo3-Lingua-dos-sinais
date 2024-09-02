@@ -25,8 +25,13 @@ const generalImgDtArr = [
         src: '../Assets/imgs/general/char3.png'
     },
     {
-        name: 'clouds_gif',
-        key: 'clouds gif',
+        name: 'clouds_gif1',
+        key: 'clouds gif1',
+        src: '../Assets/imgs/general/clouds_gif.gif'
+    },
+    {
+        name: 'clouds_gif2',
+        key: 'clouds gif2',
         src: '../Assets/imgs/general/clouds_gif.gif'
     },
     {
@@ -40,8 +45,23 @@ const generalImgDtArr = [
         src: '../Assets/imgs/general/earth.png'
     },
     {
-        name: 'grass',
-        key: 'grass',
+        name: 'grass1',
+        key: 'grass1',
+        src: '../Assets/imgs/general/grass.png'
+    },
+    {
+        name: 'grass2',
+        key: 'grass2',
+        src: '../Assets/imgs/general/grass.png'
+    },
+    {
+        name: 'grass3',
+        key: 'grass3',
+        src: '../Assets/imgs/general/grass.png'
+    },
+    {
+        name: 'grass4',
+        key: 'grass4',
         src: '../Assets/imgs/general/grass.png'
     },
     {

@@ -13,9 +13,6 @@ html{
 :root{
     --bg-light--:       #fdfdfd;
     --bg-dark--:        #303030;
-    /* --base-color----:        #303030; */
-    /* --base-color----:        #303030; */
-    /* --base-color----:        #303030; */
     --letter-1-color--: #e54123;
     --letter-2-color--: #f2dd04;
     --letter-3-color--: #009551;
@@ -27,7 +24,6 @@ html{
     --blue-btn-deep3--: #4271fd;
     --blue-btn-deep2--: #7dbdf1;
     --blue-btn-deep1--: #accbeb;
-
     --green-btn-deep1--: #97ff98;
 }
 body{
@@ -51,6 +47,8 @@ body{
     outline: none;
     border-radius: 15px;
     transition: transform .2s ease;
+    user-select: none;
+    outline: none;
 
 }
 .btn:hover{
@@ -59,6 +57,9 @@ body{
 i{
     font-size: 3rem;
 
+}
+div{
+    user-select: none;
 }
 .gameControls{
     display: flex;
@@ -272,6 +273,8 @@ img{
         bottom: 0;
         left: 1rem;
         border-radius: 80% 80% 20px 20px;
+        z-index: 10;
+        cursor: pointer;
 
         & .bg-gifs-home{
             height: 12.5rem;
@@ -445,7 +448,7 @@ img{
         align-items: center;
         justify-content: space-around;
 
-        & .lt-btn{
+        & .ft-btn{
             padding: .5rem 2rem;
             background-image: radial-gradient(circle, #f0ff00, #ff8300, #ff4d00);
             color: var(--bg-light--);
@@ -458,6 +461,7 @@ img{
             right: 0;
             color: var(--denial--);
             margin:  0 1rem;
+            background-color: transparent;
 
             & i {
                 font-size: 7rem;
@@ -468,9 +472,6 @@ img{
     
 
 }
-
-
-
 
 
 @media (max-height: 1080px){

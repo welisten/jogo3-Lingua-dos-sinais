@@ -122,8 +122,8 @@ class Preloader{
                 gameCanvas.remove()
                 
                 gameData.mainClass = 'App'
-                // new App()
-                new Letters()
+                new App()
+                // new Letters()
             })
         })
 

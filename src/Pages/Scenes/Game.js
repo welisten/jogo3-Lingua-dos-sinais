@@ -57,7 +57,10 @@ class App {
         this.setContainersElms()
 
         this.playAudio(gameAssets['positiveBlipEffect'])
-        setTimeout(() => this.playAudio(gameAssets['theme1'], .5, true), 1000)
+        setTimeout(() =>{
+            this.playAudio(gameAssets['theme1'], .5, true)
+            gameData.isClickable = true
+        }, 1000)
     }
 
     buildContainer(){
@@ -149,10 +152,12 @@ class App {
         const wordBtn_El = document.getElementById('hm-wordsBtn')
         
         letterBtn_El.addEventListener('click', (e) => {
+            if(!gameData.isClickable) return
             this.stopCurrentAudio()
             new Letters(this)
         })
         wordBtn_El.addEventListener('click', (e) => {
+            if(!gameData.isClickable) return
             this.stopCurrentAudio()
             new Words(this)
         })
