@@ -1,6 +1,6 @@
 import { gameData } from "../../Constants/gameData.js";
 import { colors } from "../../Constants/Colors.js";
-import { Letters } from "./Letters.js";
+import { Alphabet } from "./Alphabet.js";
 import { Words } from "./Words.js";
 
 
@@ -154,7 +154,7 @@ class App {
         letterBtn_El.addEventListener('click', (e) => {
             if(!gameData.isClickable) return
             this.stopCurrentAudio()
-            new Letters(this)
+            new Alphabet(this)
         })
         wordBtn_El.addEventListener('click', (e) => {
             if(!gameData.isClickable) return
@@ -215,8 +215,7 @@ class App {
         gameData.isMute = !gameData.isMute
     }
     resetContainerToNewScene(){
-        this.element.querySelector('.bg').remove()
-        this.element.querySelectorAll('.hm-c').forEach(el => el.remove())
+        this.element.innerHTML = " "
         this.element.classList.remove('hm')
 
     }
@@ -232,7 +231,6 @@ class App {
                 if(!h_aux){
                     h_aux = !h_aux
                     this.playAudio(gameAssets['btn_select'])
-                    console.log('o mouse está dentro')
                 }
             })
 

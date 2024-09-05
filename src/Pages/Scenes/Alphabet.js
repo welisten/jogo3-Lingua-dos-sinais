@@ -1,17 +1,21 @@
 import { gameData } from "../../Constants/gameData.js";
 import { colors } from "../../Constants/Colors.js";
 import { generalImgDtArr } from "../../Constants/ImagesData.js";
-class Letters {
+import { Letter } from "../../Class/Letter.js";
+import { Sign } from "../../Class/Sign.js";
+
+class Alphabet {
     constructor(game){
         this.game = game
         this.element = document.querySelector('#gameContainer')
-        this.element.classList.add('lt') // le -> letter
+        this.element.classList.add('lt') // lt -> letters
         document.title = 'Aprendendo o alfabeto'
         
         this.lettersArr = []
         this.signsArr = []
+        this.currentIndex = 0
+
         this.game.resetContainerToNewScene()
-        
         this.provisorySetContainer()
         this.start()
     }
@@ -32,10 +36,13 @@ class Letters {
     start(){
         this.game.playAudio(gameAssets['nature_ambience'])
         this.buildContainer()
+        this.setContainerElements()
     }
 
     buildContainer(){
-        // this.generateCard()
+        this.generateLetterCards()
+        this.generateSignCards()
+
         const createNewElement = (el, cl = undefined, id = undefined, src = undefined) => {
             const element = document.createElement(el)
 
@@ -57,7 +64,6 @@ class Letters {
         bg_cloud1.setAttribute('src', './../../Assets/imgs/general/clouds_gif.gif')
         bg_cloud1.setAttribute('alt', 'nuvens')
         bg_cloud1.setAttribute('class', 'bg-gifs-clouds bg-c1')
-        console.log(bg_cloud1)
         
         const bg_cloud2 = this.getImage('clouds_gif2')
         bg_cloud2.setAttribute('src', './../Assets/imgs/general/clouds_gif.gif')
@@ -74,7 +80,7 @@ class Letters {
         bg_home.setAttribute('alt','home')
         bg_home.setAttribute('class','bg-gifs-home')
 
-        const homeBtnEl = createNewElement('button', 'btn bg-homeBtn')
+        const homeBtnEl = createNewElement('button', 'btn bg-homeBtn', 'homeBtn')
 
         homeBtnEl.appendChild(bg_home)
         backgroudGifsEl.appendChild(bg_cloud1)
@@ -164,18 +170,16 @@ class Letters {
         const lt_mainEl = createNewElement('div', "lt-main")
         const mainContainer = createNewElement('div', 'lt-mn-container container')
         const letterCard = createNewElement('div', 'lt-mn-letterCard lt-card')
-        const letterImg = this.getImage('A')
+        const letterImg = this.lettersArr[0].element
         
-        letterImg.setAttribute('src', './../Assets/imgs/letters/A.gif')
-        letterImg.setAttribute('alt', `Letra A`) // atenção para template string ao refatorar essa parte
+        letterImg.setAttribute('alt', this.lettersArr[this.currentIndex].alt) // atenção para template string ao refatorar essa parte
         letterImg.setAttribute('class', `lt-letter`) 
 
         const mn_iEqual = createNewElement('i', 'fa-solid fa-equals')
         const signCard = createNewElement('div', 'lt-mn-signCard lt-card')
-        const signImg = this.getImage('a')
+        const signImg = this.signsArr[this.currentIndex].element
         
-        signImg.setAttribute('src', './../Assets/imgs/hands/a.png')
-        signImg.setAttribute('alt', `sinal A`) // atenção para template string ao refatorar essa parte
+        signImg.setAttribute('alt', this.signsArr[this.currentIndex].alt) // atenção para template string ao refatorar essa parte
         signImg.setAttribute('class', `lt-sign`)
         
         letterCard.appendChild(letterImg)
@@ -191,18 +195,84 @@ class Letters {
         const playBtn = createNewElement('button', 'playBtn btn', 'playBtn')
         const iPrev = createNewElement('i', 'fa-solid fa-left-long')
         const iNext = createNewElement('i', 'fa-solid fa-right-long')
-        const iYouTube = createNewElement('i', 'fa-brands fa-youtube')
+        const aYouTube = createNewElement('a')
         
+        aYouTube.setAttribute('href', 'https://www.youtube.com/watch?v=EZxkymw426U&t=33s')
+        aYouTube.setAttribute('target', '_blank')
+        
+        const iYouTube = createNewElement('i', 'fa-brands fa-youtube')
+
+        aYouTube.appendChild(iYouTube)
         prevBtn.appendChild(iPrev)
         nextBtn.appendChild(iNext)
-        playBtn.appendChild(iYouTube)
+        playBtn.appendChild(aYouTube)
         footerContainer.append(prevBtn, nextBtn, playBtn)
         lt_footerEl.appendChild(footerContainer)
         
         this.element.append(backgroudGifsEl, lt_headerEl, lt_mainEl, lt_footerEl)
     }
-    generateCards(){
+    setContainerElements(){
+        const homeBtn = document.querySelector('#homeBtn')
+        const prevBtn = document.querySelector('#prevBtn')
+        const nextBtn = document.querySelector('#nextBtn')
 
+
+        homeBtn.addEventListener('click', () => {
+            this.game.resetContainerToNewScene()
+            this.game.start()
+        })
+
+        prevBtn.addEventListener('click', () => {
+            if(this.currentIndex > 0){
+                this.currentIndex--
+                this.updateMain()
+
+            }
+        })
+        nextBtn.addEventListener('click', () => {
+            if(this.currentIndex <= 24){
+                this.currentIndex++
+                this.updateMain()
+            }
+        })
+    }
+    generateLetterCards(){
+        try{
+            for(let code = 65; code <= 90; code++){
+                this.lettersArr.push(new Letter(code))
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+    updateMain(){
+        const letterCard = document.querySelector('.lt-mn-letterCard')                
+        const signCard = document.querySelector('.lt-mn-signCard')
+
+        letterCard.innerHTML = ''
+        signCard.innerHTML   = ''
+
+        const letterImg = this.lettersArr[this.currentIndex].element
+        const signImg = this.signsArr[this.currentIndex].element
+
+
+        letterImg.setAttribute('alt', this.lettersArr[this.currentIndex].alt) // atenção para template string ao refatorar essa parte
+        letterImg.setAttribute('class', `lt-letter`) 
+
+        signImg.setAttribute('alt', this.signsArr[this.currentIndex].alt) // atenção para template string ao refatorar essa parte
+        signImg.setAttribute('class', `lt-sign`)
+
+        letterCard.appendChild(letterImg)
+        signCard.appendChild(signImg)
+    }
+    generateSignCards(){
+        try{
+            for(let code = 97; code <= 122; code++){
+                this.signsArr.push(new Sign(code))
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
     }
     getImage(key){
         return gameAssets[key]
@@ -210,5 +280,5 @@ class Letters {
 }
 
 export{
-    Letters
+    Alphabet
 }

@@ -1,6 +1,6 @@
 // CLASS
 import { App } from "./Game.js";
-import { Letters } from "./Letters.js";
+import { Alphabet } from "./Alphabet.js";
 // GAME DATA
 import { gameData } from "../../Constants/gameData.js";
 
@@ -122,6 +122,7 @@ class Preloader{
                 gameCanvas.remove()
                 
                 gameData.mainClass = 'App'
+                console.clear()
                 new App()
                 // new Letters()
             })
