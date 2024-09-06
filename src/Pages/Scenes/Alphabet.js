@@ -34,7 +34,7 @@ class Alphabet {
     }
 
     start(){
-        this.game.playAudio(gameAssets['nature_ambience'])
+        this.game.playAudio(gameAssets['nature_ambience'], 1, true)
         this.buildContainer()
         this.setContainerElements()
     }
@@ -97,6 +97,7 @@ class Alphabet {
 
         const searchBarBtn = createNewElement('button', 'lt-hd-searchBtn')
         searchBarBtn.setAttribute('type', 'submit')
+        searchBarBtn.setAttribute('id', 'searchBtn')
 
 
         const iSearchEl = createNewElement('i', 'fa-solid fa-magnifying-glass')
@@ -215,7 +216,8 @@ class Alphabet {
         const homeBtn = document.querySelector('#homeBtn')
         const prevBtn = document.querySelector('#prevBtn')
         const nextBtn = document.querySelector('#nextBtn')
-
+        const searchBar =  document.querySelector('.lt-hd-searchBar')
+        const searchBtn = document.querySelector('#searchBtn')
 
         homeBtn.addEventListener('click', () => {
             this.game.resetContainerToNewScene()
@@ -226,15 +228,51 @@ class Alphabet {
             if(this.currentIndex > 0){
                 this.currentIndex--
                 this.updateMain()
+                this.game.playAudio(gameAssets['btn_select'])
 
             }
         })
+
         nextBtn.addEventListener('click', () => {
             if(this.currentIndex <= 24){
                 this.currentIndex++
                 this.updateMain()
+                this.game.playAudio(gameAssets['btn_select'])
             }
         })
+
+        searchBtn.addEventListener('click', (e) => {
+            e.preventDefault()
+
+            if(searchBar.value){
+                handleSearchValue(searchBar.value)
+
+            }else {
+                this.game.popUpMessage('Você precisa digitar uma LETRA !')
+            }
+            this.game.playAudio(gameAssets['btn_select'])
+            searchBar.value = ''
+        })
+
+        const handleSearchValue = ( value ) =>{
+
+            if(!value){
+                this.game.popUpMessage('Você precisa digitar uma LETRA !');
+                return
+            } 
+
+            let text = value[0].toLowerCase()
+            let charCode = text.charCodeAt(0)
+            let mappedCode;
+            
+            if(charCode < 97 || charCode > 122){
+                this.game.popUpMessage('Digite uma LETRA válida !');
+            } else {
+                mappedCode = charCode - 97
+                this.currentIndex = mappedCode
+                this.updateMain()
+            }
+        }
     }
     generateLetterCards(){
         try{
