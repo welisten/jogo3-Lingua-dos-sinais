@@ -257,12 +257,13 @@ class Alphabet {
             if(!value){
                 this.game.popUpMessage('Você precisa digitar uma LETRA !');
                 return
-            } 
+            }
+
             let filterAll_Radio = document.querySelector('.ft-btn-rd#todos')
             filterAll_Radio.click()
+
             this.generateLetterCards()
             this.generateSignCards()
-
 
             let text = value[0].toLowerCase()
             let charCode = text.charCodeAt(0)
