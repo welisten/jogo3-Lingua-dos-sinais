@@ -14,6 +14,8 @@ class Alphabet {
         this.lettersArr = []
         this.signsArr = []
         this.currentIndex = 0
+        this.filter = 'todos'
+        this.vogalsCharCode = [65, 69, 73, 79, 85]
 
         this.game.resetContainerToNewScene()
         this.provisorySetContainer()
@@ -218,33 +220,30 @@ class Alphabet {
         const nextBtn = document.querySelector('#nextBtn')
         const searchBar =  document.querySelector('.lt-hd-searchBar')
         const searchBtn = document.querySelector('#searchBtn')
-
+        const filterBtns = document.querySelectorAll('.ft-btn-rd')
+        
         homeBtn.addEventListener('click', () => {
             this.game.resetContainerToNewScene()
             this.game.start()
         })
 
-        prevBtn.addEventListener('click', () => {
-            if(this.currentIndex > 0){
-                this.currentIndex--
-                this.updateMain()
+        filterBtns.forEach(filter => {
+            filter.addEventListener('click', () =>{
+                
+                filterByType(filter.value)
                 this.game.playAudio(gameAssets['btn_select'])
-
-            }
+            })
         })
 
-        nextBtn.addEventListener('click', () => {
-            if(this.currentIndex <= 24){
-                this.currentIndex++
-                this.updateMain()
-                this.game.playAudio(gameAssets['btn_select'])
-            }
-        })
+        prevBtn.addEventListener('click', () => prevBtnCallback())
+
+        nextBtn.addEventListener('click', () => nextBtnCallback())
 
         searchBtn.addEventListener('click', (e) => {
             e.preventDefault()
 
             if(searchBar.value){
+
                 handleSearchValue(searchBar.value)
 
             }else {
@@ -255,11 +254,15 @@ class Alphabet {
         })
 
         const handleSearchValue = ( value ) =>{
-
             if(!value){
                 this.game.popUpMessage('Você precisa digitar uma LETRA !');
                 return
             } 
+            let filterAll_Radio = document.querySelector('.ft-btn-rd#todos')
+            filterAll_Radio.click()
+            this.generateLetterCards()
+            this.generateSignCards()
+
 
             let text = value[0].toLowerCase()
             let charCode = text.charCodeAt(0)
@@ -273,20 +276,82 @@ class Alphabet {
                 this.updateMain()
             }
         }
+
+        const filterByType = (value) => {
+            this.filter = value
+            this.currentIndex = 0
+
+            switch(this.filter){
+                case 'todos':
+                    this.filter = 'todos'
+                    break;
+                case 'vogais':
+                    this.filter = 'vogais'
+                    break;
+                case 'consoantes':
+                    this.filter = 'consoantes'
+                    break;
+            }
+
+            this.generateLetterCards()
+            this.generateSignCards()
+            this.updateMain()
+        }
+
+        const prevBtnCallback = () => {
+            if(this.currentIndex > 0){
+                this.currentIndex--
+                this.updateMain()
+                this.game.playAudio(gameAssets['btn_select'])
+            }
+        }
+
+        const nextBtnCallback = () => {
+            if(this.currentIndex < this.lettersArr.length - 1){
+                this.currentIndex++
+                this.updateMain()
+                this.game.playAudio(gameAssets['btn_select'])
+            }
+            
+        }
     }
     generateLetterCards(){
         try{
-            for(let code = 65; code <= 90; code++){
-                this.lettersArr.push(new Letter(code))
+            switch(this.filter){
+                case 'todos':
+                    this.lettersArr.length = 0
+                    for(let code = 65; code <= 90; code++){
+                        this.lettersArr.push(new Letter(code))
+                    }                    
+                    break;
+
+                case 'vogais':
+                    this.lettersArr.length = 0
+                    for(let i = 0; i < this.vogalsCharCode.length; i++){
+                        this.lettersArr.push(new Letter(this.vogalsCharCode[i]))
+                    }
+                    break;
+
+                case 'consoantes':
+                    this.lettersArr.length = 0
+                    for(let code = 65, i = 0; code <= 90; code++){
+                        if(this.vogalsCharCode.includes(code)){
+                            continue;  
+                        } 
+                        this.lettersArr.push(new Letter(code))
+                    }                    
+                    break;
             }
+
         } catch (error) {
             console.log(error.message)
         }
     }
     updateMain(){
+
         const letterCard = document.querySelector('.lt-mn-letterCard')                
         const signCard = document.querySelector('.lt-mn-signCard')
-
+        
         letterCard.innerHTML = ''
         signCard.innerHTML   = ''
 
@@ -305,9 +370,29 @@ class Alphabet {
     }
     generateSignCards(){
         try{
-            for(let code = 97; code <= 122; code++){
-                this.signsArr.push(new Sign(code))
+            switch(this.filter){
+                case 'todos':
+                    this.signsArr.length = 0
+                    for(let code = 97; code <= 122; code++){
+                        this.signsArr.push(new Sign(code))
+                    }
+                    break;
+                case 'vogais':
+                    this.signsArr.length = 0
+                    for(let i = 0; i < this.vogalsCharCode.length; i++){
+                        this.signsArr.push(new Sign(this.vogalsCharCode[i] + 32))
+                    }
+                    break;
+                case 'consoantes':
+                    this.signsArr.length = 0
+                    for(let code = 97; code <= 122; code++){
+                        if(this.vogalsCharCode.includes(code - 32)) continue;
+
+                        this.signsArr.push(new Sign(code))
+                    }
+                    break;
             }
+
         } catch (error) {
             console.log(error.message)
         }

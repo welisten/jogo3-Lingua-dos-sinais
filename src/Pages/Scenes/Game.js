@@ -243,6 +243,7 @@ class App {
         const popUp = document.getElementById('popUpMessage')
         const popupText = document.querySelector('.popupText')
         
+        this.playAudio(gameAssets['deny'])
         popUp.style.top = `0`
         popupText.children[0].textContent = message
     

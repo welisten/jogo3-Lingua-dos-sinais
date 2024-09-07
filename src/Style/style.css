@@ -88,7 +88,7 @@ img{
 #popUpMessage{
     position: absolute;
     top: -33rem;
-    right: 15%;
+    right: 7.5%;
     min-height: 33rem;
     min-width: 45rem;
     background-image: url('./../Assets/imgs/general/popUp_board.png');
@@ -109,6 +109,11 @@ img{
     font-size: 3rem;
     font-family: "Moderustic", sans-serif;
     color: white;
+}
+#popUpMessage .popupText p{
+    width: 90%;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 #gameContainer.inactive{

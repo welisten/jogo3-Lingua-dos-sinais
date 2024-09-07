@@ -18,6 +18,11 @@ const audioDataArr = [
         name: 'nature_ambience',
         key: 'nature ambience',
         src:'../Assets/songs/natureAmbience.wav'
+    },
+    {
+        name: 'deny',
+        key: 'deny',
+        src:'../Assets/songs/deny.wav'
     }
 ]
 
