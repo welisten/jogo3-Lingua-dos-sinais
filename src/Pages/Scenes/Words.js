@@ -6,9 +6,20 @@ class Words {
         this.game = game
         this.element = document.querySelector('#gameContainer')
 
+        this.element.classList.add('wd')
         this.game.resetContainerToNewScene()
+        this.start()
+    }
+    start(){
+       this.buildContainer()
     }
 
+    buildContainer(){
+        this.game.buildBg()
+    }
+    getImage(key){
+        return gameAssets[key]
+    }
     
 }
 

@@ -6,8 +6,8 @@ import { Words } from "./Words.js";
 
 class App {
     constructor(){
-        
-        this.element = document.querySelector('#gameContainer'),
+
+        this.element = document.querySelector('#gameContainer')
         this.element.classList.add('hm')
        
         this.currentAudio = {config:{startTime: 0, pausedAt: 0}}
@@ -253,6 +253,53 @@ class App {
             setTimeout( () => popupText.children[0].textContent = '', 1000)
 
         }, delay)
+    }
+    buildBg(){
+        const backgroudGifsEl = this.createNewElement('div', "container bg-gifs")
+       
+        const bg_cloud1 = this.getImage('clouds_gif1')
+        bg_cloud1.setAttribute('src', './../../Assets/imgs/general/clouds_gif.gif')
+        bg_cloud1.setAttribute('alt', 'nuvens')
+        bg_cloud1.setAttribute('class', 'bg-gifs-clouds bg-c1')
+        
+        const bg_cloud2 = this.getImage('clouds_gif2')
+        bg_cloud2.setAttribute('src', './../Assets/imgs/general/clouds_gif.gif')
+        bg_cloud2.setAttribute('alt', 'nuvens')
+        bg_cloud2.setAttribute('class', 'bg-gifs-clouds bg-c2')
+       
+        const bg_sun = this.getImage('sun_gif')  
+        bg_sun.setAttribute('src','./../Assets/imgs/general/sun_gif.gif')
+        bg_sun.setAttribute('alt','sol')
+        bg_sun.setAttribute('class','bg-gifs-sun')
+
+        const bg_home = this.getImage('home_gif')  
+        bg_home.setAttribute('src','./../Assets/imgs/general/home_gif.gif')
+        bg_home.setAttribute('alt','home')
+        bg_home.setAttribute('class','bg-gifs-home')
+
+        const homeBtnEl = this.createNewElement('button', 'btn bg-homeBtn', 'homeBtn')
+
+        homeBtnEl.appendChild(bg_home)
+        backgroudGifsEl.appendChild(bg_cloud1)
+        backgroudGifsEl.appendChild(bg_cloud2)
+        backgroudGifsEl.appendChild(bg_sun)
+        backgroudGifsEl.appendChild(homeBtnEl)
+
+        document.getElementById('gameContainer').appendChild(backgroudGifsEl)
+    }
+    createNewElement(el, cl = undefined, id = undefined, src = undefined){
+        const element = document.createElement(el)
+
+        if(cl){
+            let clss = cl.split(' ')
+            for(let i = 0; i < clss.length; i++){
+                element.classList.add(clss[i])
+            }
+        } 
+        if(id)  element.setAttribute('id', id);
+        if(src) element.setAttribute('src', src);
+
+        return element
     }
 }
 

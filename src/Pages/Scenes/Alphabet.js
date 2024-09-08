@@ -44,104 +44,61 @@ class Alphabet {
     buildContainer(){
         this.generateLetterCards()
         this.generateSignCards()
-
-        const createNewElement = (el, cl = undefined, id = undefined, src = undefined) => {
-            const element = document.createElement(el)
-
-            if(cl){
-                let clss = cl.split(' ')
-                for(let i = 0; i < clss.length; i++){
-                    element.classList.add(clss[i])
-                }
-            } 
-            if(id)  element.setAttribute('id', id);
-            if(src) element.setAttribute('src', src);
-
-            return element
-        }
                                     // BACKGROUND
-        const backgroudGifsEl = createNewElement('div', "container bg-gifs")
-       
-        const bg_cloud1 = this.getImage('clouds_gif1')
-        bg_cloud1.setAttribute('src', './../../Assets/imgs/general/clouds_gif.gif')
-        bg_cloud1.setAttribute('alt', 'nuvens')
-        bg_cloud1.setAttribute('class', 'bg-gifs-clouds bg-c1')
-        
-        const bg_cloud2 = this.getImage('clouds_gif2')
-        bg_cloud2.setAttribute('src', './../Assets/imgs/general/clouds_gif.gif')
-        bg_cloud2.setAttribute('alt', 'nuvens')
-        bg_cloud2.setAttribute('class', 'bg-gifs-clouds bg-c2')
-       
-        const bg_sun = this.getImage('sun_gif')  
-        bg_sun.setAttribute('src','./../Assets/imgs/general/sun_gif.gif')
-        bg_sun.setAttribute('alt','sol')
-        bg_sun.setAttribute('class','bg-gifs-sun')
-
-        const bg_home = this.getImage('home_gif')  
-        bg_home.setAttribute('src','./../Assets/imgs/general/home_gif.gif')
-        bg_home.setAttribute('alt','home')
-        bg_home.setAttribute('class','bg-gifs-home')
-
-        const homeBtnEl = createNewElement('button', 'btn bg-homeBtn', 'homeBtn')
-
-        homeBtnEl.appendChild(bg_home)
-        backgroudGifsEl.appendChild(bg_cloud1)
-        backgroudGifsEl.appendChild(bg_cloud2)
-        backgroudGifsEl.appendChild(bg_sun)
-        backgroudGifsEl.appendChild(homeBtnEl)
+        this.game.buildBg()
                                     // HEADER
-        const lt_headerEl = createNewElement('div', "lt-header container")
+        const lt_headerEl = this.game.createNewElement('div', "lt-header container")
         
-        const searchContaiEl = createNewElement('form', 'lt-hd-search btn')
-        const searchBarEl = createNewElement('input', 'lt-hd-searchBar')
+        const searchContaiEl = this.game.createNewElement('form', 'lt-hd-search btn')
+        const searchBarEl = this.game.createNewElement('input', 'lt-hd-searchBar')
         searchBarEl.setAttribute('type', 'text')
         searchBarEl.setAttribute('placeholder', 'digite uma letra')
 
-        const searchBarBtn = createNewElement('button', 'lt-hd-searchBtn')
+        const searchBarBtn = this.game.createNewElement('button', 'lt-hd-searchBtn')
         searchBarBtn.setAttribute('type', 'submit')
         searchBarBtn.setAttribute('id', 'searchBtn')
 
 
-        const iSearchEl = createNewElement('i', 'fa-solid fa-magnifying-glass')
+        const iSearchEl = this.game.createNewElement('i', 'fa-solid fa-magnifying-glass')
         searchBarBtn.appendChild(iSearchEl)
         searchContaiEl.appendChild(searchBarEl)
         searchContaiEl.appendChild(searchBarBtn)
         
-        const navContaiEl = createNewElement('div', 'lt-hd-nav container')
-        const navFiltersContain = createNewElement('div', 'hd-nav-filters container')
+        const navContaiEl = this.game.createNewElement('div', 'lt-hd-nav container')
+        const navFiltersContain = this.game.createNewElement('div', 'hd-nav-filters container')
         
-        const filterContainer1 = createNewElement('div', 'ft-btn-container btn')
-        const filterContainer2 = createNewElement('div', 'ft-btn-container btn')
-        const filterContainer3 = createNewElement('div', 'ft-btn-container btn')
+        const filterContainer1 = this.game.createNewElement('div', 'ft-btn-container btn')
+        const filterContainer2 = this.game.createNewElement('div', 'ft-btn-container btn')
+        const filterContainer3 = this.game.createNewElement('div', 'ft-btn-container btn')
 
-        const radio1 = createNewElement('input', 'ft-btn-rd', 'todos')
+        const radio1 = this.game.createNewElement('input', 'ft-btn-rd', 'todos')
         radio1.setAttribute('type','radio')
         radio1.setAttribute('name','group')
         radio1.setAttribute('value','todos')
         radio1.setAttribute('checked','')
 
         
-        const radio2 = createNewElement('input', 'ft-btn-rd', 'vogais')
+        const radio2 = this.game.createNewElement('input', 'ft-btn-rd', 'vogais')
         radio2.setAttribute('type','radio')
         radio2.setAttribute('name','group')
         radio2.setAttribute('value','vogais')
 
-        const radio3 = createNewElement('input', 'ft-btn-rd', 'consoates')
+        const radio3 = this.game.createNewElement('input', 'ft-btn-rd', 'consoates')
         radio3.setAttribute('type','radio')
         radio3.setAttribute('name','group')
         radio3.setAttribute('value','consoantes')
         
 
 
-        const label_rd1 = createNewElement('label', 'filterBtn')
+        const label_rd1 = this.game.createNewElement('label', 'filterBtn')
         label_rd1.setAttribute('for', '')
         label_rd1.innerHTML = 'todos'
         
-        const label_rd2 = createNewElement('label', 'filterBtn')
+        const label_rd2 = this.game.createNewElement('label', 'filterBtn')
         label_rd2.setAttribute('for', '')
         label_rd2.innerHTML = 'vogais'
         
-        const label_rd3 = createNewElement('label', 'filterBtn')
+        const label_rd3 = this.game.createNewElement('label', 'filterBtn')
         label_rd3.setAttribute('for', '')
         label_rd3.innerHTML = 'consoantes'
 
@@ -170,16 +127,16 @@ class Alphabet {
         lt_headerEl.append(searchContaiEl, navContaiEl)
 
                                     // MAIN
-        const lt_mainEl = createNewElement('div', "lt-main")
-        const mainContainer = createNewElement('div', 'lt-mn-container container')
-        const letterCard = createNewElement('div', 'lt-mn-letterCard lt-card')
+        const lt_mainEl = this.game.createNewElement('div', "lt-main")
+        const mainContainer = this.game.createNewElement('div', 'lt-mn-container container')
+        const letterCard = this.game.createNewElement('div', 'lt-mn-letterCard lt-card')
         const letterImg = this.lettersArr[0].element
         
         letterImg.setAttribute('alt', this.lettersArr[this.currentIndex].alt) // atenção para template string ao refatorar essa parte
         letterImg.setAttribute('class', `lt-letter`) 
 
-        const mn_iEqual = createNewElement('i', 'fa-solid fa-equals')
-        const signCard = createNewElement('div', 'lt-mn-signCard lt-card')
+        const mn_iEqual = this.game.createNewElement('i', 'fa-solid fa-equals')
+        const signCard = this.game.createNewElement('div', 'lt-mn-signCard lt-card')
         const signImg = this.signsArr[this.currentIndex].element
         
         signImg.setAttribute('alt', this.signsArr[this.currentIndex].alt) // atenção para template string ao refatorar essa parte
@@ -191,19 +148,19 @@ class Alphabet {
         lt_mainEl.appendChild(mainContainer)
 
                                     // FOOTER
-        const lt_footerEl = createNewElement('div', "lt-footer")
-        const footerContainer = createNewElement('div', 'lt-ft-btns container')
-        const prevBtn = createNewElement('button', 'prevBtn ft-btn btn', 'prevBtn')
-        const nextBtn = createNewElement('button', 'nextBtn ft-btn btn', 'nextBtn')
-        const playBtn = createNewElement('button', 'playBtn btn', 'playBtn')
-        const iPrev = createNewElement('i', 'fa-solid fa-left-long')
-        const iNext = createNewElement('i', 'fa-solid fa-right-long')
-        const aYouTube = createNewElement('a')
+        const lt_footerEl = this.game.createNewElement('div', "lt-footer")
+        const footerContainer = this.game.createNewElement('div', 'lt-ft-btns container')
+        const prevBtn = this.game.createNewElement('button', 'prevBtn ft-btn btn', 'prevBtn')
+        const nextBtn = this.game.createNewElement('button', 'nextBtn ft-btn btn', 'nextBtn')
+        const playBtn = this.game.createNewElement('button', 'playBtn btn', 'playBtn')
+        const iPrev = this.game.createNewElement('i', 'fa-solid fa-left-long')
+        const iNext = this.game.createNewElement('i', 'fa-solid fa-right-long')
+        const aYouTube = this.game.createNewElement('a')
         
         aYouTube.setAttribute('href', 'https://www.youtube.com/watch?v=EZxkymw426U&t=33s')
         aYouTube.setAttribute('target', '_blank')
         
-        const iYouTube = createNewElement('i', 'fa-brands fa-youtube')
+        const iYouTube = this.game.createNewElement('i', 'fa-brands fa-youtube')
 
         aYouTube.appendChild(iYouTube)
         prevBtn.appendChild(iPrev)
@@ -212,7 +169,7 @@ class Alphabet {
         footerContainer.append(prevBtn, nextBtn, playBtn)
         lt_footerEl.appendChild(footerContainer)
         
-        this.element.append(backgroudGifsEl, lt_headerEl, lt_mainEl, lt_footerEl)
+        this.element.append(lt_headerEl, lt_mainEl, lt_footerEl)
     }
     setContainerElements(){
         const homeBtn = document.querySelector('#homeBtn')
@@ -223,6 +180,7 @@ class Alphabet {
         const filterBtns = document.querySelectorAll('.ft-btn-rd')
         
         homeBtn.addEventListener('click', () => {
+            this.game.stopCurrentAudio()
             this.game.resetContainerToNewScene()
             this.game.start()
         })
