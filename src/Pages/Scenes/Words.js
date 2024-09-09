@@ -62,6 +62,7 @@ class Words {
         const arvore_2 = this.getImage('tree2')
 
         arvore_1.setAttribute('alt', 'arvore')
+        wordParagraf.setAttribute('id', 'userText' )
         wordParagraf.innerText = ' '
         arvore_2.setAttribute('alt', 'arvore')
 
@@ -102,7 +103,20 @@ class Words {
     }
     
     setContainerElement(){
+        const searchBtn =  document.getElementById('wdc-searchBtn')
+        const searchBar =  document.getElementById('wdc-searchBar')
+        const userTextEl = document.getElementById('userText')
 
+        searchBtn.addEventListener('click', (e) => {
+            e.preventDefault()
+            if(searchBar.value){
+                userTextEl.innerText = searchBar.value
+                searchBar.value = ''
+            }
+            else {
+                this.game.popUpMessage('Digite alguma palavra no campo de pesquisa')
+            }
+        })
     }
     
     getImage(key){
