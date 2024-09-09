@@ -8,6 +8,7 @@ class Alphabet {
     constructor(game){
         this.game = game
         this.element = document.querySelector('#gameContainer')
+        
         this.element.classList.add('lt') // lt -> letters
         document.title = 'Aprendendo o alfabeto'
         
@@ -172,18 +173,11 @@ class Alphabet {
         this.element.append(lt_headerEl, lt_mainEl, lt_footerEl)
     }
     setContainerElements(){
-        const homeBtn = document.querySelector('#homeBtn')
         const prevBtn = document.querySelector('#prevBtn')
         const nextBtn = document.querySelector('#nextBtn')
         const searchBar =  document.querySelector('.lt-hd-searchBar')
         const searchBtn = document.querySelector('#searchBtn')
         const filterBtns = document.querySelectorAll('.ft-btn-rd')
-        
-        homeBtn.addEventListener('click', () => {
-            this.game.stopCurrentAudio()
-            this.game.resetContainerToNewScene()
-            this.game.start()
-        })
 
         filterBtns.forEach(filter => {
             filter.addEventListener('click', () =>{

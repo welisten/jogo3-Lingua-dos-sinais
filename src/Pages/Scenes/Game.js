@@ -279,6 +279,12 @@ class App {
 
         const homeBtnEl = this.createNewElement('button', 'btn bg-homeBtn', 'homeBtn')
 
+        homeBtnEl.addEventListener('click', () => {
+            this.stopCurrentAudio()
+            this.resetContainerToNewScene()
+            this.start()
+        })
+
         homeBtnEl.appendChild(bg_home)
         backgroudGifsEl.appendChild(bg_cloud1)
         backgroudGifsEl.appendChild(bg_cloud2)

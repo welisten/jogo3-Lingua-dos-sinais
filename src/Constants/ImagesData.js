@@ -65,6 +65,31 @@ const generalImgDtArr = [
         src: '../Assets/imgs/general/grass.png'
     },
     {
+        name: 'grass5',
+        key: 'grass5',
+        src: '../Assets/imgs/general/grass.png'
+    },
+    {
+        name: 'grass6',
+        key: 'grass6',
+        src: '../Assets/imgs/general/grass.png'
+    },
+    {
+        name: 'grass7',
+        key: 'grass7',
+        src: '../Assets/imgs/general/grass.png'
+    },
+    {
+        name: 'grass8',
+        key: 'grass8',
+        src: '../Assets/imgs/general/grass.png'
+    },
+    {
+        name: 'grass9',
+        key: 'grass9',
+        src: '../Assets/imgs/general/grass.png'
+    },
+    {
         name: 'hand_slin',
         key: 'hand slin',
         src: '../Assets/imgs/general/hand_slin.png'
@@ -90,8 +115,13 @@ const generalImgDtArr = [
         src: '../Assets/imgs/general/title.png'
     },
     {
-        name: 'tree',
-        key: 'tree',
+        name: 'tree1',
+        key: 'tree 1',
+        src: '../Assets/imgs/general/tree.png'
+    },
+    {
+        name: 'tree2',
+        key: 'tree 2',
         src: '../Assets/imgs/general/tree.png'
     },
     {
