@@ -4,7 +4,7 @@ import { colors } from "../../Constants/Colors.js";
 class Words {
     constructor(game){
         this.game = game
-        this.element = document.querySelector('#gameContainer')
+        this.element = document.querySelector('#game_Container')
         
         this.element.classList.add('wd')
         document.title = 'Aprendendo Palavras!'
@@ -16,6 +16,8 @@ class Words {
         this.buildContainer()
         this.game.playAudio(gameAssets['nature_ambience'], 1, true)
         this.setContainerElement()
+
+
     }
 
     buildContainer(){
@@ -72,9 +74,12 @@ class Words {
         searchContainer.appendChild(wordSection)
         
         const signContainer = this.game.createNewElement('div', 'signContainer container')
-        const sign = this.game.createNewElement('div', 'sign')
+        const vwBtn = document.querySelector('[vw-access-button]')
+        const access = document.querySelector('.access')
 
-        signContainer.appendChild(sign)
+        signContainer.appendChild(access)
+        access.style.display = 'block'
+        // vwBtn.click()
 
         wd_main.append(searchContainer, signContainer)
 

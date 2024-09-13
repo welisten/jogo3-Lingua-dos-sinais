@@ -11,9 +11,39 @@
     <!-- JS -->
     <script type="module" src="../Constants/gameData.js"></script>
     <script type="module" src="../JavaScript/pre.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="../Style/style.css">
     <link rel="stylesheet" href="../Style/preload.css">
+    <style>
+        .access{
+            position: relative!important;
+        }
+        div[vw]{
+            position: absolute !important;
+            top: 0%!important;
+            right: 0%!important;
+            max-width: 100% !important;
+            width: 100%;
+            transform: translateY(0)!important;
+            transition: none !important;
+            z-index: 1000!important;
+        } 
+        div[vw] [vw-plugin-wrapper].active{
+            width: 100%!important;
+            height: 100%!important;
+            top: 0!important;
+            right: 0!important;
+            transform: translate(0%, 0%)!important;
+
+        } 
+        .vpw-header-btn-close{
+            background-color: red!important;
+        }
+        .vpw-controls-fullscreen{
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
     <div id="logoContainer">
@@ -23,12 +53,25 @@
        </div>
     </div>
     <div id="popUpMessage"><div class="popupText"><p></p></div></div>
-    <div id="gameContainer" class="inactive wd">
-
+    <div id="game_Container" class="inactive">
+        <div class="access" style="display: none;">
+            <div vw class="enabled" style="margin: 0!important; height: 100%!important;"">
+                <div vw-access-button class="active" style="position: relative;"></div>
+                <div vw-plugin-wrapper>
+                  <div class="vw-plugin-top-wrapper"></div>
+                </div>
+            </div>      
+            <div class="accessible_text">
+                
+            </div>
+        </div>
     </div>
     <div class="gameControls container">
         <button class="btn controls" id="muteBtn"><i class="fa-solid fa-volume-high"></i></button>
         <button class="btn controls" id="lightBtn"><i class="fa-regular fa-sun"></i></button>
     </div>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
 </html>

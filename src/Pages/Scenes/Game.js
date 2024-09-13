@@ -7,7 +7,7 @@ import { Words } from "./Words.js";
 class App {
     constructor(){
 
-        this.element = document.querySelector('#gameContainer')
+        this.element = document.querySelector('#game_Container')
         this.element.classList.add('hm')
        
         this.currentAudio = {config:{startTime: 0, pausedAt: 0}}
@@ -215,8 +215,10 @@ class App {
         gameData.isMute = !gameData.isMute
     }
     resetContainerToNewScene(){
+        const access = document.querySelector('.access')
         this.element.innerHTML = " "
-        this.element.classList.remove('hm')
+        this.element.appendChild(access)
+        this.element.className = ''
 
     }
     getImage(key){
@@ -291,7 +293,7 @@ class App {
         backgroudGifsEl.appendChild(bg_sun)
         backgroudGifsEl.appendChild(homeBtnEl)
 
-        document.getElementById('gameContainer').appendChild(backgroudGifsEl)
+        document.getElementById('game_Container').appendChild(backgroudGifsEl)
     }
     createNewElement(el, cl = undefined, id = undefined, src = undefined){
         const element = document.createElement(el)

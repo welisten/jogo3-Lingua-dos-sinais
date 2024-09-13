@@ -124,13 +124,13 @@ img{
     white-space: normal;
 }
 
-#gameContainer.inactive{
+#game_Container.inactive{
     display: none;
 }
-#gameContainer.inactive ~ .gameControls{
+#game_Container.inactive ~ .gameControls{
     display: none;
 }
-#gameContainer{
+#game_Container{
     position: relative;
     max-height: 590px;
     max-width: 930px;
@@ -145,7 +145,7 @@ img{
 
 /* HOME */
 
-#gameContainer.hm{
+#game_Container.hm{
     border-radius:130px 20px 20px 20px ;
 }
 .bg{
@@ -624,8 +624,8 @@ img{
         width: 50%;
         padding: 0 5%;
 
-        & .sign{
-        border: 3px solid #4ba4ff;
+        & .access{
+            border: 3px solid #4ba4ff;
             height: 90%;
             width: 100%;
             border-radius: 15px;
@@ -668,8 +668,12 @@ img{
         bottom: 0;
         right: 5%;
         height: 300%;
+        z-index: 1001;
     }
 }
+
+
+
 
 
 @media (max-height: 1080px){
