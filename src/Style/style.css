@@ -106,7 +106,6 @@ img{
     font-size: 3rem;
     font-family: "Moderustic", sans-serif;
     color: white;
-    border: 1px solid red;
 }
 #popUpMessage .popupText p{
     position: absolute;
@@ -666,7 +665,7 @@ img{
     & .wd-char3{
         position: absolute;
         bottom: 0;
-        right: 5%;
+        right: 0;
         height: 300%;
         z-index: 1001;
     }

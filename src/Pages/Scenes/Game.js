@@ -70,7 +70,7 @@ class App {
 
         this.element.classList.remove('inactive')
         
-        ruleW = window.innerWidth > 2000 ? window.innerWidth * 0.40 : window.innerWidth > 1500 ? window.innerWidth * 0.65 : window.innerWidth * 0.55
+        ruleW = window.innerWidth > 2000 ? window.innerWidth * 0.75 : window.innerWidth > 1500 ? window.innerWidth * 0.65 : window.innerWidth * 0.55
         gContainerWidth  = Math.floor(ruleW)
         gcontainerHeight  = window.innerHeight * .7 
 
@@ -214,13 +214,13 @@ class App {
 
         gameData.isMute = !gameData.isMute
     }
-    resetContainerToNewScene(){
+    resetContainerToNewScene(classStr = ''){
         const access = document.querySelector('.access')
         this.element.innerHTML = " "
         this.element.appendChild(access)
-        this.element.className = ''
-
+        this.element.className = classStr
     }
+
     getImage(key){
         return gameAssets[key]
     }
@@ -283,7 +283,7 @@ class App {
 
         homeBtnEl.addEventListener('click', () => {
             this.stopCurrentAudio()
-            this.resetContainerToNewScene()
+            this.resetContainerToNewScene('hm')
             this.start()
         })
 

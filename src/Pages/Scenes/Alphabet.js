@@ -7,9 +7,8 @@ import { Sign } from "../../Class/Sign.js";
 class Alphabet {
     constructor(game){
         this.game = game
-        this.element = document.querySelector('#gameContainer')
+        this.element = document.querySelector('#game_Container')
         
-        this.element.classList.add('lt') // lt -> letters
         document.title = 'Aprendendo o alfabeto'
         
         this.lettersArr = []
@@ -18,7 +17,7 @@ class Alphabet {
         this.filter = 'todos'
         this.vogalsCharCode = [65, 69, 73, 79, 85]
 
-        this.game.resetContainerToNewScene()
+        this.game.resetContainerToNewScene('lt')
         this.provisorySetContainer()
         this.start()
     }

@@ -6,10 +6,9 @@ class Words {
         this.game = game
         this.element = document.querySelector('#game_Container')
         
-        this.element.classList.add('wd')
         document.title = 'Aprendendo Palavras!'
 
-        this.game.resetContainerToNewScene()
+        this.game.resetContainerToNewScene('wd')
         this.start()
     }
     start(){
@@ -78,8 +77,8 @@ class Words {
         const access = document.querySelector('.access')
 
         signContainer.appendChild(access)
+        vwBtn.click()
         access.style.display = 'block'
-        // vwBtn.click()
 
         wd_main.append(searchContainer, signContainer)
 
@@ -115,13 +114,39 @@ class Words {
         searchBtn.addEventListener('click', (e) => {
             e.preventDefault()
             if(searchBar.value){
+                this.game.playAudio(gameAssets['btn_select'])
                 userTextEl.innerText = searchBar.value
                 searchBar.value = ''
+                this.readWithAccessibility()
             }
             else {
                 this.game.popUpMessage('Digite alguma palavra no campo de pesquisa')
             }
         })
+    }
+
+    readWithAccessibility(){
+        const accessibleTextContainer = document.querySelector('#userText')
+        
+        const mouseOverEvent = new MouseEvent('mouseover', {
+            bubbles: true,
+            cancelable: false,
+            view: window
+        })
+        const mouseOutEvent = new MouseEvent('mouseout', {
+            bubbles: true,
+            cancelable: false,
+            view: window
+        })
+        const clickEvent = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: false,
+            view: window
+        })
+
+        accessibleTextContainer.dispatchEvent(mouseOverEvent)
+        setTimeout(() => accessibleTextContainer.dispatchEvent(clickEvent), 200)
+        accessibleTextContainer.dispatchEvent(mouseOutEvent)
     }
     
     getImage(key){
