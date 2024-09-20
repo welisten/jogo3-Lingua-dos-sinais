@@ -15,6 +15,8 @@ class App {
         this.gainNode = this.audioContext.createGain()
         
         document.title = 'Vamos Librar !'
+        gameData.mainScene = 'Game'
+
         if(!gameData.isMute) this.gainNode.gain.value == 0
 
         
@@ -280,10 +282,19 @@ class App {
         bg_home.setAttribute('class','bg-gifs-home')
 
         const homeBtnEl = this.createNewElement('button', 'btn bg-homeBtn', 'homeBtn')
-
+        
         homeBtnEl.addEventListener('click', () => {
+            const accessBtn = document.querySelector('[vw-access-button]')
+
+            if(gameData.mainScene === 'Words' && !accessBtn.classList.contains('active')){
+                this.popUpMessage('aperte o "X" vermelho para fechar a aplicação', 1000)
+                // indicar x
+                return
+            }
             this.stopCurrentAudio()
             this.resetContainerToNewScene('hm')
+            gameData.mainScene = 'Game'
+
             this.start()
         })
 

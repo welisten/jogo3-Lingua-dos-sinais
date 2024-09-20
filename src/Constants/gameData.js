@@ -8,7 +8,8 @@ const gameData = {
     isClickable: false,
     lastAccText: '',
     lastLevel: 1,
-    mainClass: 'Preload'
+    mainScene: 'Preload',
+    wereVLibrasActived: false
 } 
 
 window.gameData = gameData // RETIRAR DEPOIS

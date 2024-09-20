@@ -9,7 +9,9 @@ class Alphabet {
         this.game = game
         this.element = document.querySelector('#game_Container')
         
+        this.game.resetContainerToNewScene('lt')
         document.title = 'Aprendendo o alfabeto'
+        gameData.mainScene = 'Alphabet'
         
         this.lettersArr = []
         this.signsArr = []
@@ -17,7 +19,6 @@ class Alphabet {
         this.filter = 'todos'
         this.vogalsCharCode = [65, 69, 73, 79, 85]
 
-        this.game.resetContainerToNewScene('lt')
         this.provisorySetContainer()
         this.start()
     }

@@ -7,6 +7,7 @@ class Words {
         this.element = document.querySelector('#game_Container')
         
         document.title = 'Aprendendo Palavras!'
+        gameData.mainScene = 'Words'
 
         this.game.resetContainerToNewScene('wd')
         this.start()
@@ -78,7 +79,10 @@ class Words {
 
         signContainer.appendChild(access)
         vwBtn.click()
+        
+        if(!gameData.wereVLibrasActived) setTimeout(() => this.setCloseBtn(), 10000);
         access.style.display = 'block'
+        gameData.wereVLibrasActived = true
 
         wd_main.append(searchContainer, signContainer)
 
@@ -110,7 +114,8 @@ class Words {
         const searchBtn =  document.getElementById('wdc-searchBtn')
         const searchBar =  document.getElementById('wdc-searchBar')
         const userTextEl = document.getElementById('userText')
-
+        const vwBtn = document.querySelector('[vw-access-button]')
+        
         searchBtn.addEventListener('click', (e) => {
             e.preventDefault()
             if(searchBar.value){
@@ -124,7 +129,20 @@ class Words {
             }
         })
     }
+    setCloseBtn(){
+        const closeBtn = document.querySelector('.vpw-header-btn-close')
+        const access = document.querySelector('.access')
 
+        if(!closeBtn){
+            this.game.popUpMessage('O botão de fechar não foi encontrado !')
+            console.error('O botão de fechar não foi encontrado !')
+        }
+        else {
+            closeBtn.addEventListener('click', () => {
+                access.style.display = 'none'
+            } )
+        }
+    }
     readWithAccessibility(){
         const accessibleTextContainer = document.querySelector('#userText')
         
