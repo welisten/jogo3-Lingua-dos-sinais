@@ -346,8 +346,16 @@ const lettersImgDtArr = [
     },
 ]
 
+const wordsImgDtArr = [
+    {
+        name: 'ddd',
+        src: '../Assets/imgs/explorar/ddd.jpg'
+    },
+]
+
 export{
     generalImgDtArr,
     handsImgDtArr,
     lettersImgDtArr,
+    wordsImgDtArr
 }

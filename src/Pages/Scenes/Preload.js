@@ -4,7 +4,7 @@ import { App } from "./Game.js";
 import { gameData } from "../../Constants/gameData.js";
 
 // ASSETS DATA
-import { generalImgDtArr, handsImgDtArr, lettersImgDtArr } from "../../Constants/ImagesData.js";
+import { generalImgDtArr, handsImgDtArr, lettersImgDtArr, wordsImgDtArr } from "../../Constants/ImagesData.js";
 import { audioDataArr } from "../../Constants/songsData.js";
 
 // CONSTANTS
@@ -105,6 +105,9 @@ class Preloader{
             for(let dataObj of generalImgDtArr){
                 criarObjeto(store, dataObj.name, getImage(dataObj.name))
             }
+            for(let dataObj of wordsImgDtArr){
+                criarObjeto(store, dataObj.name, getImage(dataObj.name))
+            }
             for(let i = 0 ; i < lettersImgDtArr.length; i++){
                 criarObjeto(store, lettersImgDtArr[i].name, getImage(lettersImgDtArr[i].name))
                 criarObjeto(store, handsImgDtArr[i].name, getImage(handsImgDtArr[i].name))
@@ -127,6 +130,9 @@ class Preloader{
         })
 
         for(let dataObj of generalImgDtArr){
+            this.load.image(dataObj.name, dataObj.src)
+        }
+        for(let dataObj of wordsImgDtArr){
             this.load.image(dataObj.name, dataObj.src)
         }
 

@@ -161,6 +161,10 @@ img{
     z-index: 1;
     opacity: .15;
 }
+.bg.wd{
+    background-image: url('./../Assets/imgs/explorar/ddd.jpg');
+
+}
 .hm-c{
     width: 100%; 
     height: 40%;
@@ -491,6 +495,108 @@ img{
 
 }
 
+
+/* Palavras */
+.wd{
+    & .wd_main{
+        height: 75%;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+
+        & .wd_main_cardContainer{
+            width: 70%;
+            height: 75%;
+            margin-top: 5%;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+
+            & .card{
+                height: 100%;
+                width: 40%;
+                border-radius: 15px;
+                background-color: var(--bg-light--);
+                z-index: 2;
+
+            }
+            & .imgCard{
+                border: 3px solid var(--letter-4-color--);
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+
+                & img{
+                    max-height: 100%;
+                    object-fit: contain;
+                    border-radius: 12px;
+                }
+                 
+
+            }
+            & .vLibrasCard{
+                border: 1px solid var(--letter-2-color--);
+            }
+
+        }
+
+        & .wd_main_middleBar{
+            height: 30%;
+            width: 100%;
+            padding: 0 2.5%;
+            
+            & .wd_btn{
+                padding: 2rem 2rem;
+                background-image: radial-gradient(circle, #f0ff00, #ff8300, #ff4d00);
+                color: var(--bg-light--);
+                border-radius: 10px;
+                border: none;
+                margin: 0 2.5%;
+                cursor: pointer;
+                z-index: 2;
+            }
+            & .imgTitle{
+                height: 100%;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                
+                & .p_title{
+                    font-size: 3.5rem;
+                    font-weight: 600;
+                    color: #fff;
+                    text-transform: capitalize;
+                    padding: 1rem;
+                    border-radius: 15px;
+                    background-color: var(--blue-btn-deep2--);
+                    transform: translateY(50%);
+                    z-index: 2;
+                }
+
+            }
+
+        }
+    }               
+    & .wd_footer{
+        height: 25%;
+        width: 100%;
+
+        & .imgDescription{
+            height: 100%;
+            width: 100%;
+            padding: 3% 10% 0;
+
+            & p.p_imgDescri{
+                font-size: 1.6rem;
+                text-align: center;
+
+            }
+        }
+
+    }               
+
+}
                                     /* Explorar */
 
 .ex-header{
