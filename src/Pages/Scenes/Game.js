@@ -2,6 +2,7 @@ import { gameData } from "../../Constants/gameData.js";
 import { colors } from "../../Constants/Colors.js";
 import { Alphabet } from "./Alphabet.js";
 import { Words } from "./Words.js";
+import { Explore } from "./Explore.js";
 
 
 class App {
@@ -125,9 +126,11 @@ class App {
         const menuC_El = createNewElement('div', 'hm-menu container')
         const letterBtn_El = createNewElement('button', 'btn hm-btn', 'hm-lettersBtn')
         const wordBtn_El = createNewElement('button', 'btn hm-btn', 'hm-wordsBtn')
+        const exploreBtn_El = createNewElement('button', 'btn hm-btn', 'hm-exploreBtn')
 
         letterBtn_El.innerHTML = 'alfabeto'
         wordBtn_El.innerHTML = 'palavras'
+        exploreBtn_El.innerHTML = 'explorar'
         
         const hand1_img_El = createNewElement('img', 'hand h-1', undefined, "../Assets/imgs/general/hand.png")
 
@@ -139,6 +142,7 @@ class App {
         
         menuC_El.appendChild(letterBtn_El)
         menuC_El.appendChild(wordBtn_El)
+        menuC_El.appendChild(exploreBtn_El)
         wrapperC_El.appendChild(hand2_img_El)
         homeC_bottom_El.appendChild(menuC_El)
         homeC_bottom_El.appendChild(hand1_img_El)
@@ -152,6 +156,7 @@ class App {
         // CONFIGURAR OS BOTÕES DO MENU E QUALQUER OUTRO ELEMENTO DA TELA
         const letterBtn_El = document.getElementById('hm-lettersBtn')
         const wordBtn_El = document.getElementById('hm-wordsBtn')
+        const exploreBtn_El = document.getElementById('hm-exploreBtn')
         
         letterBtn_El.addEventListener('click', (e) => {
             if(!gameData.isClickable) return
@@ -162,6 +167,11 @@ class App {
             if(!gameData.isClickable) return
             this.stopCurrentAudio()
             new Words(this)
+        })
+        exploreBtn_El.addEventListener('click', (e) => {
+            if(!gameData.isClickable) return
+            this.stopCurrentAudio()
+            new Explore(this)
         })
 
         this.setBtns()
@@ -285,10 +295,12 @@ class App {
         
         homeBtnEl.addEventListener('click', () => {
             const accessBtn = document.querySelector('[vw-access-button]')
-
-            if(gameData.mainScene === 'Words' && !accessBtn.classList.contains('active')){
+            
+            let OR_rule = (gameData.mainScene === 'Words' || gameData.mainScene === 'Explore' )
+            
+            if( OR_rule && !accessBtn.classList.contains('active')){
                 this.popUpMessage('aperte o "X" vermelho para fechar a aplicação', 1000)
-                // indicar x
+                // função para indicar x
                 return
             }
             this.stopCurrentAudio()

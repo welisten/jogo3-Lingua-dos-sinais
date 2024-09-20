@@ -163,11 +163,12 @@ img{
 }
 .hm-c{
     width: 100%; 
-    height: 50%;
+    height: 40%;
 }
+
 .hm-c.bottom{
+    height: 60%;
     position: relative;
-    height: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: end;
@@ -178,7 +179,6 @@ img{
     width: 35%;
     height: 100%;
     z-index: 5;
-
 }
 .lg-earth{
     height: 50rem;
@@ -215,7 +215,7 @@ img{
     right: 30%;
     height: 85%;
     z-index: 2;
-
+    transform: scale(.9);
 }
 .wrapper{
     position: absolute;
@@ -231,6 +231,7 @@ img{
     opacity: .75;
     height: 85%;
     top: 30%;
+    transform: scale(.9);
 }
 .h-1{
     transform: rotate(180deg);
@@ -239,15 +240,15 @@ img{
 
 .bottom .hm-menu{
     flex-direction: column;
+    justify-content: center;
     float: left;
     height: 100%;
     padding: 0 4rem;
-
 }
 .hm-btn{
     margin-bottom: 2rem;
-    padding: 2.5rem 6rem;
-    font-size: 5rem;
+    padding: 1.5rem 6rem;
+    font-size: 4rem;
     font-family: "Matemasie", sans-serif;
     border-radius: 15px;
     background-image: linear-gradient(135deg, #f0ff00, #ff8300, #ff4d00);
@@ -490,9 +491,9 @@ img{
 
 }
 
-                                    /* PALAVRAS */
+                                    /* Explorar */
 
-.wd-header{
+.ex-header{
     height: 20%;
     width: 100%;
     position: relative;
@@ -527,7 +528,7 @@ img{
         top: 9%;
     }
 }
-.wd-main{
+.ex-main{
     height: 70%;
     width: 100%;
     flex-direction: row;
@@ -538,7 +539,7 @@ img{
         width: 50%;
         flex-direction: column;
 
-        & .wdc-mn-search{
+        & .exc-mn-search{
             height: 10%;
             width: 95%;
             display: flex;
@@ -548,7 +549,7 @@ img{
             cursor: inherit;
             z-index: 5;
         
-            & .wdc-mn-searchBar{
+            & .exc-mn-searchBar{
                 text-align: center;
                 text-transform: uppercase;
                 font-size: 2rem;
@@ -561,7 +562,7 @@ img{
                 outline: none;
             }
         
-            & .wdc-mn-searchBtn{
+            & .exc-mn-searchBtn{
                 height: 100%;
                 width: 12.5%;
                 padding: 5px;
@@ -633,12 +634,12 @@ img{
 
     }
 }
-.wd-footer{
+.ex-footer{
     height: 10%;
     width: 100%;
     position: relative;
 
-    & .wd-grass{
+    & .ex-grass{
         position: absolute;
         width: 10%;
         bottom: 0;
@@ -655,14 +656,14 @@ img{
     & img:nth-of-type(8){right: calc(70% - 7%);}
     & img:nth-of-type(9){right: calc(80% - 8%);}
     
-    & .wd-hand-slin{
+    & .ex-hand-slin{
         position: absolute;
         bottom: 0;
         left: 9%;
         height: 30rem;
     }
 
-    & .wd-char3{
+    & .ex-char3{
         position: absolute;
         bottom: 0;
         right: 0;
