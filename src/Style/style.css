@@ -56,7 +56,9 @@ body{
 }
 i{
     font-size: 3rem;
-
+}
+i:hover{
+    text-decoration: none!important;
 }
 a{
     text-decoration: none;
@@ -162,7 +164,7 @@ img{
     opacity: .15;
 }
 .bg.wd{
-    background-image: url('./../Assets/imgs/explorar/ddd.jpg');
+    background-image: url('./../Assets/imgs/words/ddd.jpg');
 
 }
 .hm-c{

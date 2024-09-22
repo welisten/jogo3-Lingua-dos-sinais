@@ -127,7 +127,7 @@ const generalImgDtArr = [
     {
         name: 'home_gif',
         key: 'home gif',
-        src: '../Assets/imgs/general/home.gif'
+        src: '../Assets/imgs/general/home_gif.gif'
     }
 ]
 // por convenção do projeto, as imgs de libras terão seu nome com letra MINÚSCULAS
@@ -349,13 +349,112 @@ const lettersImgDtArr = [
 const wordsImgDtArr = [
     {
         name: 'ddd',
-        src: '../Assets/imgs/explorar/ddd.jpg'
+        src: '../Assets/imgs/words/ddd.jpg'
     },
 ]
+const vocabularyImgDtArr = [
+    {
+        name: 'montanha',
+        src: '../Assets/imgs/words/vocabulary/montanha.webp',
+        alt: "rio nas montanhas guapimirim convention"
+    },
+    {
+        name: 'cachoeira',
+        src: '../Assets/imgs/words/vocabulary/cachoeira.jpg',
+        alt: "Chachoeira do poço verde"
+    },
+    {
+        name: 'rio',
+        src: '../Assets/imgs/words/vocabulary/rio.png',
+        alt: "Rio da APA"
+    },
+    {
+        name: 'floresta',
+        src: '../Assets/imgs/words/vocabulary/floresta.webp',
+        alt: "Floresta da mata atlantica em Guapimirim"
+    },
+    {
+        name: 'passaro',
+        src: '../Assets/imgs/words/vocabulary/passaro.png',
+        alt: "pássaro de nome: Sabiá sete cores"
+    },
+    {
+        name: 'mata-atlantica',
+        src: '../Assets/imgs/words/vocabulary/mata-atlantica.jpg',
+        alt: "mata atlantica"
+    },
+    {
+        name: 'trilha',
+        src: '../Assets/imgs/words/vocabulary/trilha.webp',
+        alt: "trilha no meio da floresta"
+    },
+    {
+        name: 'natureza',
+        src: '../Assets/imgs/words/vocabulary/natureza.jpg',
+        alt: "natureza"
+    },
+    {
+        name: 'serra dos orgaos',
+        src: '../Assets/imgs/words/vocabulary/pnso.webp',
+        alt: "parque nacional da serra dos orgãos"
+    },
+    {
+        name: 'sol',
+        src: '../Assets/imgs/words/vocabulary/sol.webp',
+        alt: "o sol"
+    },
+    {
+        name: 'chuva',
+        src: '../Assets/imgs/words/vocabulary/chuva.jpg',
+        alt: "a chuva"
+    },
+    {
+        name: 'pedra',
+        src: '../Assets/imgs/words/vocabulary/pedra.jpg',
+        alt: "pedras"
+    },
+    {
+        name: 'trem',
+        src: '../Assets/imgs/words/vocabulary/trem.jpg',
+        alt: "Trem da estação de Guapimirim"
+    },
+    {
+        name: 'arvore',
+        src: '../Assets/imgs/words/vocabulary/arvore.webp',
+        alt: ""
+    },
+    {
+        name: 'animal',
+        src: '../Assets/imgs/words/vocabulary/animal.jpg',
+        alt: "Animal: Gambá"
+    },
+    {
+        name: 'borboleta',
+        src: '../Assets/imgs/words/vocabulary/borboleta.jpg',
+        alt: "Borboleta Capitão do Mato"
+    },
+    {
+        name: 'caminhada',
+        src: '../Assets/imgs/words/vocabulary/caminhada.jpg',
+        alt: "pessoas caminhando"
+    },
+    {
+        name: 'clima',
+        src: '../Assets/imgs/words/vocabulary/clima.jpg',
+        alt: "clima mudando"
+    },
+    {
+        name: 'passeio',
+        src: '../Assets/imgs/words/vocabulary/passeio.jpg',
+        alt: ""
+    }
+]
+
 
 export{
     generalImgDtArr,
     handsImgDtArr,
     lettersImgDtArr,
-    wordsImgDtArr
+    wordsImgDtArr,
+    vocabularyImgDtArr
 }

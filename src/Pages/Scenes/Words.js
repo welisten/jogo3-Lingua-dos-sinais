@@ -70,7 +70,7 @@ class Words {
         const footerContainer = this.game.createNewElement('div', 'wd_footer container')
         const imgDescription = this.game.createNewElement('div', 'imgDescription')
         const p_imgDescri = this.game.createNewElement('p', 'p_imgDescri')
-        p_imgDescri.innerHTML = 'O Dedo de Deus é uma formação rochosa icônica localizada no Parque Nacional da Serra dos Órgãos, em Guapimirim, Rio de Janeiro. Com uma altura de 1.692 metros, o pico se destaca por sua forma que lembra uma mão apontando para o céu, sendo uma das paisagens mais reconhecíveis da região. O Dedo de Deus é não apenas um símbolo natural, mas também um patrimônio imaterial de Guapimirim, valorizado por sua importância cultural e turística. A formação é um ponto de interesse para escaladores e visitantes, representando a beleza e a majestade da Serra dos Órgãos.'
+        p_imgDescri.innerHTML = `<strong>Descrição:</strong>  Montanha famosa em Guapimirim com formato de uma mão apontando para o céu.<br><strong>Gesto:</strong>  Use uma mão para fazer o gesto de uma mão aberta, e levante o dedo indicador, apontando para cima, representando o formato da montanha.`
         imgDescription.appendChild(p_imgDescri)
         footerContainer.appendChild(imgDescription)
 
