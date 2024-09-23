@@ -60,11 +60,40 @@
             display: none!important;
         }
         [vp] [vp-controls].vpw-controls.vpw-selectText{
-            background-color: #4ba4ff !important;
+            background-color: transparent !important;
+            visibility: visible;
+            pointer-events: all;
         }
-        .vw-links{
-            display:  none!important;
+      .vw-links{
         }
+        .vpw-selectTextLabel{
+            visibility: visible;
+            color: black!important;
+        }
+
+        [vp] [vp-rate-box].vp-enabled {
+            visibility: hidden !important;
+            pointer-events: none;
+        }
+
+        .vp-rate-box-header{
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .vp-rate-box-content{
+            visibility: hidden;
+            pointer-events: none;   
+        }
+        
+        .vpw-controls
+        {
+            visibility: hidden;
+            pointer-events: none;
+        }
+        /* .vpw-controls-subtitles.actived-subtitle{
+            visibility: visible;
+            pointer-events: all;
+        } */
     </style>
 </head>
 <body>

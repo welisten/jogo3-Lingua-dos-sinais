@@ -79,9 +79,15 @@ class Explore {
         signContainer.appendChild(access)
         vwBtn.click()
         
-        if(!gameData.wereVLibrasActived) setTimeout(() => this.setCloseBtn(), 10000);
+        if(!gameData.wereVLibrasActived){
+            setTimeout(() => {
+                this.setCloseBtn()
+                this.setSubtitle()
+            }, 10000);
+            gameData.wereVLibrasActived = true
+
+        } 
         access.style.display = 'block'
-        gameData.wereVLibrasActived = true
 
         ex_main.append(searchContainer, signContainer)
 
@@ -142,6 +148,14 @@ class Explore {
             } )
         }
     }
+    setSubtitle(){
+        const subtitleBtn = document.querySelector('.vpw-controls-subtitles')
+        if(!subtitleBtn){
+            this.game.popUpMessage('Botão subtitle não encontrado.')
+        } else {
+            subtitleBtn.click()
+        }
+    }
     readWithAccessibility(){
         const accessibleTextContainer = document.querySelector('#userText')
         
@@ -165,7 +179,6 @@ class Explore {
         setTimeout(() => accessibleTextContainer.dispatchEvent(clickEvent), 200)
         accessibleTextContainer.dispatchEvent(mouseOutEvent)
     }
-    
     getImage(key){
         return gameAssets[key]
     }

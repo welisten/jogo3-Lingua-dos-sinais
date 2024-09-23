@@ -208,11 +208,11 @@ class App {
 
         if(gameData.isDarkMode){
             // transformar em light
-            document.body.style.backgroundColor = `${colors.bg_light}`
+            document.body.style.background = `linear-gradient(135deg, #fff, #c9c9c9)`
 
         } else {
             // transformar em dark
-            document.body.style.backgroundColor = `${colors.bg_dark}`
+            document.body.style.background = `${colors.bg_dark}`
         }
         btn.children[0].classList.toggle('fa-sun')
         btn.children[0].classList.toggle('fa-moon')

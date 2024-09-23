@@ -96,3 +96,7 @@ const vocabulary = [
     gesto: 'Faça o gesto de andar com dois dedos e um movimento circular para mostrar uma caminhada divertida.'
 }
 ]
+
+export{
+    vocabulary
+}

@@ -1,21 +1,41 @@
 import { gameData } from "../../Constants/gameData.js";
+import { vocabulary } from "../../Constants/vocabulary.js";
+import { vocabularyImgDtArr } from "../../Constants/ImagesData.js";
 import { colors } from "../../Constants/Colors.js";
 
 class Words {
     constructor(game){
         this.game = game
         this.element = document.querySelector('#game_Container')
-        
+        this.cards = []
+        this.cardIdx = 0
+
+
         document.title = 'Aprendendo Palavras!'
         gameData.mainScene = 'Words'
+
 
         this.game.resetContainerToNewScene('wd')
         this.start()
     }
     start(){
+        this.generateCards()
         this.buildContainer()
         this.game.playAudio(gameAssets['nature_ambience'], 1, true)
         this.setContainerElement()
+    }
+    generateCards(){
+        generateArray(this.cards, vocabulary.length, 1)
+
+
+        function generateArray(arr, amount, step){
+            for(let i = 0; i < amount; i += step){
+                arr[i] = i
+            }
+
+            arr.sort(() => Math.random() - .5)
+        }
+        console.log(this.cards)
     }
 
     buildContainer(){
@@ -28,39 +48,69 @@ class Words {
         const wd_main_cardContainer = this.game.createNewElement('div', 'wd_main_cardContainer container')
         
         const imgCardContainer = this.game.createNewElement('div', 'imgCard card container')
-        const img = this.getImage('ddd')
-        console.log(img)
-        img.setAttribute('alt', 'Dedo de Deus')
+        const img = this.getImage(vocabularyImgDtArr[this.cards[this.cardIdx]].name)
+        
+        img.setAttribute('alt', vocabularyImgDtArr[this.cards[this.cardIdx]].alt)
 
         const vLibrasCardContainer =this.game.createNewElement('div', 'vLibrasCard card')
         const access = document.querySelector('.access')
         const vwBtn = document.querySelector('[vw-access-button]')
 
+        const pTitle = this.game.createNewElement('p', 'p_title')
+        const p_imgDescri = this.game.createNewElement('p', 'p_imgDescri')
+        let imgTitle;
         
         vLibrasCardContainer.appendChild(access)
-        imgCardContainer.appendChild(img)
         wd_main_cardContainer.append(imgCardContainer, vLibrasCardContainer)
         mainContainer.appendChild(wd_main_cardContainer)
         this.element.append(wd_bg, mainContainer)
 
         vwBtn.click()
         if(!gameData.wereVLibrasActived) {
-            setTimeout(() => this.setCloseBtn(), 10000);
+            gameData.isClickable = false
+            setTimeout(() => {
+                imgCardContainer.appendChild(img)
+
+                pTitle.innerHTML = vocabulary[this.cards[this.cardIdx]].palavra
+
+                p_imgDescri.innerHTML = `
+                <strong>Descrição:</strong> ${vocabulary[this.cards[this.cardIdx]].descricao}<br>
+                <strong>Gesto:</strong>  ${vocabulary[this.cards[this.cardIdx]].gesto}
+                `
+                imgTitle.appendChild(pTitle)
+
+                this.setCloseBtn()
+                this.setSubtitle()
+                gameData.isClickable = true
+            }, 8000);
             gameData.wereVLibrasActived = true
+
+        } else{
+            pTitle.innerHTML = vocabulary[this.cards[this.cardIdx]].palavra
+            p_imgDescri.innerHTML = `
+            <strong>Descrição:</strong> ${vocabulary[this.cards[this.cardIdx]].descricao}<br>
+            <strong>Gesto:</strong>  ${vocabulary[this.cards[this.cardIdx]].gesto}
+            `
+            imgTitle = this.game.createNewElement('div', 'imgTitle container');
+            imgTitle.appendChild(pTitle)
+
+            vLibrasCardContainer.appendChild(access)
+            imgCardContainer.appendChild(img)
+            wd_main_cardContainer.append(imgCardContainer, vLibrasCardContainer)
+            mainContainer.appendChild(wd_main_cardContainer)
+            this.element.append(wd_bg, mainContainer)
         }
+
         access.style.display = 'block'
 
         const wd_main_middleBar = this.game.createNewElement('div', 'wd_main_middleBar container')
         const prevBtn = this.game.createNewElement('button', 'prevBtn wd_btn', 'prevBtn' )
         const iprev = this.game.createNewElement('i', 'fa-solid fa-arrow-left' )
-        const imgTitle = this.game.createNewElement('div', 'imgTitle container')
-        const pTitle = this.game.createNewElement('p', 'p_title')
-        pTitle.innerHTML = 'dedo de deus'
+        if(!imgTitle) imgTitle = this.game.createNewElement('div', 'imgTitle container');
         const nextBtn = this.game.createNewElement('button', 'nextBtn wd_btn', 'nextBtn' )
         const inext = this.game.createNewElement('i', 'fa-solid fa-arrow-right' )
 
         prevBtn.appendChild(iprev)
-        imgTitle.appendChild(pTitle)
         nextBtn.appendChild(inext)
         wd_main_middleBar.append(prevBtn, imgTitle, nextBtn)
         mainContainer.appendChild(wd_main_middleBar)
@@ -69,8 +119,7 @@ class Words {
 
         const footerContainer = this.game.createNewElement('div', 'wd_footer container')
         const imgDescription = this.game.createNewElement('div', 'imgDescription')
-        const p_imgDescri = this.game.createNewElement('p', 'p_imgDescri')
-        p_imgDescri.innerHTML = `<strong>Descrição:</strong>  Montanha famosa em Guapimirim com formato de uma mão apontando para o céu.<br><strong>Gesto:</strong>  Use uma mão para fazer o gesto de uma mão aberta, e levante o dedo indicador, apontando para cima, representando o formato da montanha.`
+        
         imgDescription.appendChild(p_imgDescri)
         footerContainer.appendChild(imgDescription)
 
@@ -78,7 +127,41 @@ class Words {
     }
     
     setContainerElement(){
+        const prevBtn = document.querySelector('#prevBtn')
+        const nextBtn = document.querySelector('#nextBtn')
 
+        prevBtn.addEventListener('click', (e) => {
+            if(this.cardIdx <= 0 || !gameData.isClickable) return;
+            this.game.playAudio(gameAssets[gameAssets['btn_select']])
+            
+            this.cardIdx--
+
+            this.updateCards()
+        })
+        nextBtn.addEventListener('click', () => {
+            if(this.cardIdx >= vocabulary.length || !gameData.isClickable) return;
+            this.game.playAudio(gameAssets['btn_select'])
+            this.cardIdx++
+            this.updateCards()
+        
+        })
+
+    }
+    updateCards(){
+        let imgCard = document.querySelector('.imgCard')
+        let imgTitle = document.querySelector('.p_title')
+        let imgDescription = document.querySelector('.p_imgDescri')
+        
+        imgCard.innerHTML =  ''
+
+        let img = this.getImage(vocabularyImgDtArr[this.cards[this.cardIdx]].name)
+        imgCard.appendChild(img)
+        img.setAttribute('alt', vocabularyImgDtArr[this.cards[this.cardIdx]].alt)
+        imgTitle.innerHTML = vocabulary[this.cards[this.cardIdx]].palavra
+        imgDescription.innerHTML = `
+        <strong>Descrição:</strong> ${vocabulary[this.cards[this.cardIdx]].descricao}<br>
+        <strong>Gesto:</strong>  ${vocabulary[this.cards[this.cardIdx]].gesto}
+        `
     }
     setCloseBtn(){
         const closeBtn = document.querySelector('.vpw-header-btn-close')
@@ -92,6 +175,14 @@ class Words {
             closeBtn.addEventListener('click', () => {
                 access.style.display = 'none'
             } )
+        }
+    }
+    setSubtitle(){
+        const subtitleBtn = document.querySelector('.vpw-controls-subtitles')
+        if(!subtitleBtn){
+            this.game.popUpMessage('Botão subtitle não encontrado.')
+        } else {
+            subtitleBtn.click()
         }
     }
     readWithAccessibility(){

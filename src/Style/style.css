@@ -31,7 +31,7 @@ body{
     width: 100vw;
     overflow: hidden;
     font-family: "Moderustic", sans-serif;
-    background-color: var(--bg-dark--);
+    background: var(--bg-dark--);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -527,10 +527,14 @@ img{
                 justify-content: center;
                 align-items: center;
                 overflow: hidden;
+                height: 100%;
 
                 & img{
+                    /* max-height: 100%; */
+                    min-width: 100%;
+                    min-height: 100%;
                     max-height: 100%;
-                    object-fit: contain;
+                    object-fit: cover;
                     border-radius: 12px;
                 }
                  
@@ -548,7 +552,7 @@ img{
             padding: 0 2.5%;
             
             & .wd_btn{
-                padding: 2rem 2rem;
+                padding: 1rem 2rem;
                 background-image: radial-gradient(circle, #f0ff00, #ff8300, #ff4d00);
                 color: var(--bg-light--);
                 border-radius: 10px;
@@ -556,6 +560,7 @@ img{
                 margin: 0 2.5%;
                 cursor: pointer;
                 z-index: 2;
+                max-height: 50%;
             }
             & .imgTitle{
                 height: 100%;
@@ -563,6 +568,7 @@ img{
                 align-items: center;
                 justify-content: center;
                 text-align: center;
+                text-transform: capitalize;
                 
                 & .p_title{
                     font-size: 3.5rem;
