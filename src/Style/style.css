@@ -509,6 +509,7 @@ img{
         & .wd_main_cardContainer{
             width: 70%;
             height: 75%;
+            min-height: 75%;
             margin-top: 5%;
             flex-direction: row;
             align-items: center;
@@ -560,7 +561,7 @@ img{
                 margin: 0 2.5%;
                 cursor: pointer;
                 z-index: 2;
-                max-height: 50%;
+                height: 5rem;
             }
             & .imgTitle{
                 height: 100%;

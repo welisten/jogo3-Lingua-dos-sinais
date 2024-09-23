@@ -104,10 +104,10 @@ class Words {
         access.style.display = 'block'
 
         const wd_main_middleBar = this.game.createNewElement('div', 'wd_main_middleBar container')
-        const prevBtn = this.game.createNewElement('button', 'prevBtn wd_btn', 'prevBtn' )
+        const prevBtn = this.game.createNewElement('button', 'prevBtn wd_btn btn', 'prevBtn' )
         const iprev = this.game.createNewElement('i', 'fa-solid fa-arrow-left' )
         if(!imgTitle) imgTitle = this.game.createNewElement('div', 'imgTitle container');
-        const nextBtn = this.game.createNewElement('button', 'nextBtn wd_btn', 'nextBtn' )
+        const nextBtn = this.game.createNewElement('button', 'nextBtn wd_btn btn', 'nextBtn' )
         const inext = this.game.createNewElement('i', 'fa-solid fa-arrow-right' )
 
         prevBtn.appendChild(iprev)
@@ -131,7 +131,8 @@ class Words {
         const nextBtn = document.querySelector('#nextBtn')
 
         prevBtn.addEventListener('click', (e) => {
-            if(this.cardIdx <= 0 || !gameData.isClickable) return;
+            if(!gameData.isClickable) return
+            if(this.cardIdx <= 0 ) return;
             this.game.playAudio(gameAssets[gameAssets['btn_select']])
             
             this.cardIdx--
@@ -139,12 +140,14 @@ class Words {
             this.updateCards()
         })
         nextBtn.addEventListener('click', () => {
-            if(this.cardIdx >= vocabulary.length || !gameData.isClickable) return;
+            if(!gameData.isClickable) return
+            if(this.cardIdx >= vocabulary.length - 1) return;
             this.game.playAudio(gameAssets['btn_select'])
             this.cardIdx++
             this.updateCards()
         
         })
+        this.game.setBtns(document.querySelector('.wd_main_middleBar'))
 
     }
     updateCards(){

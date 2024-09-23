@@ -236,15 +236,15 @@ class App {
     getImage(key){
         return gameAssets[key]
     }
-    setBtns(){
-        let btns = document.querySelectorAll('.btn')
+    setBtns(element = document){
+        let btns = element.querySelectorAll('.btn')
         let h_aux = false;
-
+        console.log(btns)
         btns.forEach((btn) => {
             btn.addEventListener('mouseenter', () => {
                 if(!h_aux){
                     h_aux = !h_aux
-                    this.playAudio(gameAssets['btn_select'])
+                   if(element === document) this.playAudio(gameAssets['btn_select'])
                 }
             })
 
@@ -308,6 +308,10 @@ class App {
             gameData.mainScene = 'Game'
 
             this.start()
+        })
+
+        homeBtnEl.addEventListener('mouseenter', () => {
+            this.playAudio(gameAssets['btn_select'])
         })
 
         homeBtnEl.appendChild(bg_home)
