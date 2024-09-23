@@ -239,7 +239,6 @@ class App {
     setBtns(element = document){
         let btns = element.querySelectorAll('.btn')
         let h_aux = false;
-        console.log(btns)
         btns.forEach((btn) => {
             btn.addEventListener('mouseenter', () => {
                 if(!h_aux){

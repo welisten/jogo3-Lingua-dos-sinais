@@ -52,7 +52,7 @@ const vocabulary = [
     descricao: 'Veículo que anda sobre trilhos.',
 },
 {
-    palavra: 'arvore',
+    palavra: 'árvore',
     descricao: 'Planta grande com tronco e galhos.',
 },
 {

@@ -35,7 +35,6 @@ class Words {
 
             arr.sort(() => Math.random() - .5)
         }
-        console.log(this.cards)
     }
 
     buildContainer(){
@@ -57,6 +56,7 @@ class Words {
         const vwBtn = document.querySelector('[vw-access-button]')
 
         const pTitle = this.game.createNewElement('p', 'p_title')
+        pTitle.setAttribute('id', 'pTitle')
         const p_imgDescri = this.game.createNewElement('p', 'p_imgDescri')
         let imgTitle;
         
@@ -133,6 +133,7 @@ class Words {
         const prevBtn = document.querySelector('#prevBtn')
         const nextBtn = document.querySelector('#nextBtn')
 
+
         prevBtn.addEventListener('click', (e) => {
             if(!gameData.isClickable) return
             if(this.cardIdx <= 0 ) return;
@@ -150,10 +151,60 @@ class Words {
             this.updateCards()
         
         })
+        document.addEventListener('keydown', (e) => {
+            if(gameData.mainScene !== 'Words' || gameData.isClickable == false) return
+            switch(e.key){
+                case 'ArrowLeft':
+                    if(this.cardIdx <= 0) return
+                    this.cardIdx--
+                    this.updateCards()
+                    break
+                
+                case 'ArrowRight':
+                    if(this.cardIdx >= vocabulary.length - 1) return
+                    this.cardIdx++
+                    this.updateCards()
+                    break
+                
+                case 'Enter':
+                    console.log('ArrowLeft')
+                    this.readWithAccessibility()
+                    break
+                
+                default:
+                    return;
+                
+            }
+        })
         this.game.setBtns(document.querySelector('.wd_main_middleBar'))
 
     }
+    readWithAccessibility(){
+        const accessibleTextContainer = document.querySelector('#pTitle')
+        
+        const mouseOverEvent = new MouseEvent('mouseover', {
+            bubbles: true,
+            cancelable: false,
+            view: window
+        })
+        const mouseOutEvent = new MouseEvent('mouseout', {
+            bubbles: true,
+            cancelable: false,
+            view: window
+        })
+        const clickEvent = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: false,
+            view: window
+        })
+
+        accessibleTextContainer.dispatchEvent(mouseOverEvent)
+        setTimeout(() => accessibleTextContainer.dispatchEvent(clickEvent), 200)
+        accessibleTextContainer.dispatchEvent(mouseOutEvent)
+    }
     updateCards(){
+        gameData.isClickable = false // essa ação visa controle na callback do evento de keydown
+
         let imgCard = document.querySelector('.imgCard')
         let imgTitle = document.querySelector('.p_title')
         let imgDescription = document.querySelector('.p_imgDescri')
@@ -165,6 +216,8 @@ class Words {
         img.setAttribute('alt', vocabularyImgDtArr[this.cards[this.cardIdx]].alt)
         imgTitle.innerHTML = vocabulary[this.cards[this.cardIdx]].palavra
         imgDescription.innerHTML = `${vocabulary[this.cards[this.cardIdx]].descricao}`
+        
+        gameData.isClickable = true
     }
     setCloseBtn(){
         const closeBtn = document.querySelector('.vpw-header-btn-close')
@@ -189,7 +242,7 @@ class Words {
         }
     }
     readWithAccessibility(){
-        const accessibleTextContainer = document.querySelector('#userText')
+        const accessibleTextContainer = document.querySelector('#pTitle')
         
         const mouseOverEvent = new MouseEvent('mouseover', {
             bubbles: true,
