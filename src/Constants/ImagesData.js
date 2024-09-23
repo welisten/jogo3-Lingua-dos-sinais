@@ -90,6 +90,16 @@ const generalImgDtArr = [
         src: '../Assets/imgs/general/grass.png'
     },
     {
+        name: 'grass10',
+        key: 'grass10',
+        src: '../Assets/imgs/general/grass.png'
+    },
+    {
+        name: 'grass11',
+        key: 'grass11',
+        src: '../Assets/imgs/general/grass.png'
+    },
+    {
         name: 'hand_slin',
         key: 'hand slin',
         src: '../Assets/imgs/general/hand_slin.png'
@@ -446,7 +456,12 @@ const vocabularyImgDtArr = [
     {
         name: 'passeio',
         src: '../Assets/imgs/words/vocabulary/passeio.jpg',
-        alt: ""
+        alt: "Passeio de barco na APA"
+    },
+    {
+        name: 'flor',
+        src: '../Assets/imgs/words/vocabulary/flor.webp',
+        alt: "Flor nativa da mata Atlântica"
     }
 ]
 

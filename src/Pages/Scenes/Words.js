@@ -73,10 +73,7 @@ class Words {
 
                 pTitle.innerHTML = vocabulary[this.cards[this.cardIdx]].palavra
 
-                p_imgDescri.innerHTML = `
-                <strong>Descrição:</strong> ${vocabulary[this.cards[this.cardIdx]].descricao}<br>
-                <strong>Gesto:</strong>  ${vocabulary[this.cards[this.cardIdx]].gesto}
-                `
+                p_imgDescri.innerHTML = `${vocabulary[this.cards[this.cardIdx]].descricao}`
                 imgTitle.appendChild(pTitle)
 
                 this.setCloseBtn()
@@ -87,10 +84,7 @@ class Words {
 
         } else{
             pTitle.innerHTML = vocabulary[this.cards[this.cardIdx]].palavra
-            p_imgDescri.innerHTML = `
-            <strong>Descrição:</strong> ${vocabulary[this.cards[this.cardIdx]].descricao}<br>
-            <strong>Gesto:</strong>  ${vocabulary[this.cards[this.cardIdx]].gesto}
-            `
+            p_imgDescri.innerHTML = `${vocabulary[this.cards[this.cardIdx]].descricao}`
             imgTitle = this.game.createNewElement('div', 'imgTitle container');
             imgTitle.appendChild(pTitle)
 
@@ -118,10 +112,19 @@ class Words {
                                 // footer container
 
         const footerContainer = this.game.createNewElement('div', 'wd_footer container')
-        const imgDescription = this.game.createNewElement('div', 'imgDescription')
+        const imgDescription = this.game.createNewElement('div', 'imgDescription container')
         
         imgDescription.appendChild(p_imgDescri)
         footerContainer.appendChild(imgDescription)
+
+        for(let i = 0; i < 11; i++){
+            let img = this.getImage(`grass${i + 1}`)
+
+            img.classList.add('wd-grass')
+            img.setAttribute('alt', 'grama')
+
+            footerContainer.appendChild(img)
+        }
 
         this.element.append(wd_bg, mainContainer, footerContainer)
     }
@@ -161,10 +164,7 @@ class Words {
         imgCard.appendChild(img)
         img.setAttribute('alt', vocabularyImgDtArr[this.cards[this.cardIdx]].alt)
         imgTitle.innerHTML = vocabulary[this.cards[this.cardIdx]].palavra
-        imgDescription.innerHTML = `
-        <strong>Descrição:</strong> ${vocabulary[this.cards[this.cardIdx]].descricao}<br>
-        <strong>Gesto:</strong>  ${vocabulary[this.cards[this.cardIdx]].gesto}
-        `
+        imgDescription.innerHTML = `${vocabulary[this.cards[this.cardIdx]].descricao}`
     }
     setCloseBtn(){
         const closeBtn = document.querySelector('.vpw-header-btn-close')
