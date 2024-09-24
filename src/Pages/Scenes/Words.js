@@ -79,6 +79,8 @@ class Words {
                 this.setCloseBtn()
                 this.setSubtitle()
                 gameData.isClickable = true
+
+                pTitle.click()
             }, 8000);
             gameData.wereVLibrasActived = true
 
@@ -132,6 +134,7 @@ class Words {
     setContainerElement(){
         const prevBtn = document.querySelector('#prevBtn')
         const nextBtn = document.querySelector('#nextBtn')
+        const pTitle = this.game.createNewElement('p', 'p_title')
 
 
         prevBtn.addEventListener('click', (e) => {
@@ -142,6 +145,7 @@ class Words {
             this.cardIdx--
 
             this.updateCards()
+            this.readWithAccessibility()
         })
         nextBtn.addEventListener('click', () => {
             if(!gameData.isClickable) return
@@ -149,7 +153,7 @@ class Words {
             this.game.playAudio(gameAssets['btn_select'])
             this.cardIdx++
             this.updateCards()
-        
+            this.readWithAccessibility()        
         })
         document.addEventListener('keydown', (e) => {
             if(gameData.mainScene !== 'Words' || gameData.isClickable == false) return
