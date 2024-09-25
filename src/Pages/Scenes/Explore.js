@@ -86,7 +86,10 @@ class Explore {
             }, 10000);
             gameData.wereVLibrasActived = true
 
-        } 
+        } else {
+            setTimeout(() => this.setCloseBtn(), 1000)
+        }
+        
         access.style.display = 'block'
 
         ex_main.append(searchContainer, signContainer)
@@ -137,7 +140,7 @@ class Explore {
     setCloseBtn(){
         const closeBtn = document.querySelector('.vpw-header-btn-close')
         const access = document.querySelector('.access')
-
+        console.log(closeBtn)
         if(!closeBtn){
             this.game.popUpMessage('O botão de fechar não foi encontrado !')
             console.error('O botão de fechar não foi encontrado !')

@@ -208,7 +208,7 @@ class App {
 
         if(gameData.isDarkMode){
             // transformar em light
-            document.body.style.background = `linear-gradient(135deg, #fff, #c9c9c9)`
+            document.body.style.background = `#ddd`
 
         } else {
             // transformar em dark
@@ -253,6 +253,8 @@ class App {
         })
     }
     popUpMessage(message, delay = 3500){   // EXIBE MENSAGEM NO POPUP VISÍVEL
+        gameData.isClickable = false
+
         const popUp = document.getElementById('popUpMessage')
         const popupText = document.querySelector('.popupText')
         
@@ -264,6 +266,7 @@ class App {
         setTimeout(() => {
             popUp.style.top = `-33rem`
             setTimeout( () => popupText.children[0].textContent = '', 1000)
+            gameData.isClickable = true
 
         }, delay)
     }
@@ -293,12 +296,13 @@ class App {
         const homeBtnEl = this.createNewElement('button', 'btn bg-homeBtn', 'homeBtn')
         
         homeBtnEl.addEventListener('click', () => {
+            if(!gameData.isClickable) return
             const accessBtn = document.querySelector('[vw-access-button]')
             
             let OR_rule = (gameData.mainScene === 'Words' || gameData.mainScene === 'Explore' )
             
             if( OR_rule && !accessBtn.classList.contains('active')){
-                this.popUpMessage('aperte o "X" vermelho para fechar a aplicação', 1000)
+                this.popUpMessage('aperte o "X" vermelho para fechar a aplicação', 2000)
                 // função para indicar x
                 return
             }

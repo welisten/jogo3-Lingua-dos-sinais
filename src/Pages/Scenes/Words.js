@@ -85,6 +85,8 @@ class Words {
             gameData.wereVLibrasActived = true
 
         } else{
+            this.setCloseBtn()
+
             pTitle.innerHTML = vocabulary[this.cards[this.cardIdx]].palavra
             p_imgDescri.innerHTML = `${vocabulary[this.cards[this.cardIdx]].descricao}`
             imgTitle = this.game.createNewElement('div', 'imgTitle container');
@@ -134,7 +136,6 @@ class Words {
     setContainerElement(){
         const prevBtn = document.querySelector('#prevBtn')
         const nextBtn = document.querySelector('#nextBtn')
-        const pTitle = this.game.createNewElement('p', 'p_title')
 
 
         prevBtn.addEventListener('click', (e) => {
@@ -225,15 +226,18 @@ class Words {
     }
     setCloseBtn(){
         const closeBtn = document.querySelector('.vpw-header-btn-close')
+        const card = document.querySelector('.vLibrasCard')
         const access = document.querySelector('.access')
 
+        console.log(access)
         if(!closeBtn){
             this.game.popUpMessage('O botão de fechar não foi encontrado !')
             console.error('O botão de fechar não foi encontrado !')
         }
         else {
             closeBtn.addEventListener('click', () => {
-                access.style.display = 'none'
+                access.style.display = 'none!important;'
+                card.style.display = 'none'
             } )
         }
     }

@@ -190,6 +190,19 @@ class Alphabet {
         prevBtn.addEventListener('click', () => prevBtnCallback())
 
         nextBtn.addEventListener('click', () => nextBtnCallback())
+        document.addEventListener('keydown', (e) => {
+            if(gameData.mainScene !== 'Alphabet') return;
+            switch(e.key){
+                case 'ArrowLeft':
+                    prevBtnCallback()
+                    break;
+                case 'ArrowRight':
+                    nextBtnCallback()
+                    break;
+                default:
+                    return
+            }
+        })
 
         searchBtn.addEventListener('click', (e) => {
             e.preventDefault()
